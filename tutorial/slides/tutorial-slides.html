@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta charset="utf-8">
+<title>MATLAB Machine Learning Tutorial</title>
+<meta name="description" content="MATLAB Machine Learning Tutorial - RoboCup Rescue Simulation League">
+<meta name="author" content="Luis Gustavo Nardin">
+<meta name="author" content="Arnoud Visser">
+<meta name="author" content="Sebastian Castro">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+/>
+
+<link rel="stylesheet"
+  href="reveal/css/reveal.min.css"
+/>
+<link rel="stylesheet"
+  href="reveal/css/theme/simple.css"
+  id="theme"
+/>
+<link rel="stylesheet"
+  href="reveal/lib/css/zenburn.css"
+/>
+<script>
+  document.write( '<link rel="stylesheet" href="reveal/css/print/' +
+      (window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper') +
+      '.css" type="text/css" media="print">' );
+</script>
+
+</head>
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h3>MATLAB Machine Learning Tutorial</h3>
+        <h4>RoboCup Rescue Simulation League</h4>
+        <h5>Arnoud Visser, Luis G. Nardin, and Sebastian Castro</h5>
+      </section>
+
+      <section>
+        <section>
+          <h2>Table of Contents</h2>
+          <ol>
+            <li>Introduction of AI and Machine Learning (ML)</li>
+            <li>AI and Machine Learning Techniques
+              <ul>
+                <li>Supervised</li>
+                <li>Unsupervised</li>
+              </ul>
+            </li>
+            <li>AI and Machine Learning Techniques in RCRS</li>
+            <li>AI for Precomputation
+              <ul>
+                <li>Path Planning (A*, Dijkstra)
+                  <ul>
+                    <li>Graph creation and visualization in MATLAB</li>
+                    <li>Integrate into ADF</li>
+                  </ul>
+                </li>
+                <li>Convex Hull</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+        <section>
+          <h2>Table of Contents</h2>
+          <ol start="5">
+            <li>Machine Learning for Precomputation
+              <ul>
+                <li>Clustering (K-Means++)
+                  <ul>
+                    <li>Type and collection of data</li>
+                    <li>Visualize using MATLAB</li>
+                    <li>Integrate into ADF</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Methodology for Target Selection
+              <ul>
+                <li>Target selection model
+                  <ul>
+                    <li>Traditional Machine Learning (SVM)</li>
+                    <li>Deep Learning</li>
+                  </ul>
+                </li>
+                <li>Collect data</li>
+                <li>Train model in MATLAB</li>
+                <li>Integrate into ADF</li>
+                <li>Refine the target selection model</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+      </section>
+
+      <!-- ========================================================= -->
+    </div>
+  </div>
+
+  <script
+    src="reveal/lib/js/head.min.js"
+  ></script>
+  <script
+    src="reveal/js/reveal.min.js"
+  ></script>
+
+  <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize( {
+        controls: true,
+        progress: true,
+        history: false,
+        center: true,
+        
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+          src: 'lib/js/classList.js',
+          condition: function () {
+            return !document.body.classList;
+          }
+        }, {
+          src: 'plugin/markdown/showdown.js',
+          condition: function () {
+            return !!document.querySelector( '[data-markdown]' );
+          }
+        }, {
+          src: 'plugin/markdown/markdown.js',
+          condition: function () {
+            return !!document.querySelector( '[data-markdown]' );
+          }
+        }, {
+          src: 'plugin/highlight/highlight.js',
+          async: true,
+          callback: function () {
+            hljs.initHighlightingOnLoad();
+          }
+        }, {
+          src: 'plugin/zoom-js/zoom.js',
+          async: true,
+          condition: function () {
+            return !!document.body.classList;
+          }
+        }, {
+          src: 'plugin/notes/notes.js',
+          async: true,
+          condition: function () {
+            return !!document.body.classList;
+          }
+        }]
+      } );
+    </script>
+
+</body>
+</html>
