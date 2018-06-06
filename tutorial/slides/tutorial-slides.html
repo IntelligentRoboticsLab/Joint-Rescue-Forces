@@ -129,6 +129,131 @@
             </li>
           </ol>
         </section>
+        <!--#include file="pathplanning-slides.html" --> <!-- doesn't work!-->
+
+
+<section>
+<h3>Path-Planning and Artificial Intelligence</h3>
+
+<p>
+
+<ul>
+<li>The question is: 'What is Artificial Intelligence'?
+
+<div align=center>
+<img src=images/simple-robot.png width=400>
+</div>
+
+</ul>
+
+</section>
+
+<section>
+<h3>Path-Planning and Artificial Intelligence</h3>
+
+<p>
+
+<ul>
+<li>The answer of Russell and Norvig: 'A problem-solving agent'!
+
+<div align=center>
+<img src=images/amai-robot.jpg width=600>
+</div>
+
+</ul>
+
+<p>
+
+ <small>Illustration courtesy Stuart Russell and Peter Norvig, <i>Artificial Intelligence - a Modern Approach</i>, Pearson.</small>
+</section>
+<section>
+<h3>Path-Planning and Artificial Intelligence</h3>
+
+<p>
+
+<ul>
+<li>A problem-solving agent applies a <i>search strategy</i> on the problem:
+
+<div align=center>
+<img src=images/simple-problem-solving-agent.png width=600>
+</div>
+
+<li>So, we need a problem formulation <small>(both in Java and MATLAB)</small>.
+</ul>
+
+<p>
+
+ <small>Illustration courtesy Stuart Russell and Peter Norvig, <i>Artificial Intelligence - a Modern Approach</i>, Pearson.</small>
+</section>
+<section>
+<h3>Path-Planning as Graph Search</h3>
+
+<p>
+
+<ul>
+<li>Imagine an agent that travels in Romania:
+
+<div align=center>
+<img src=images/Romania.jpg width=600>
+</div>
+
+<li>The goal is to get in Bucharest (from Arad).
+</ul>
+
+<p>
+
+ <small>Illustration courtesy Stuart Russell and Peter Norvig, <i>Artificial Intelligence - a Modern Approach</i>, Pearson.</small>
+</section>
+<section>
+<h3>Path-Planning as Graph Search</h3>
+
+<p>
+
+<ul>
+<li>So, imagine an agent that travels on the TestMap:
+
+<div align=center>
+<img src=images/topo_metro.jpg width=600>
+</div>
+
+<li>The goal is to get in [905, 249, 298, 938, 939, 940] <br> (from node 976).
+</ul>
+
+</section>
+<section>
+<h3>Path-Planning as Graph Search</h3>
+
+<p>
+
+<ul>
+<li>You not only have to find one solution:
+
+<div align=center>
+<img src=images/topo_paths.png width=600>
+</div>
+
+<li>You also have to decide what is the best solution.
+</ul>
+
+</section>
+<section>
+<h3>Path-Planning as Graph Search</h3>
+
+<p>
+
+<ul>
+<li>And you have to find it fast when the map gets bigger:
+
+<div align=center>
+<img src=images/ParisPGraph.jpg width=600>
+</div>
+That is where the <i>search strategy</i> gets important<br>
+(e.g. Dijkstra vs A*)
+</ul>
+
+</section>
+
+      <!-- ========================================================= -->
       </section>
       <section>
         <section>
