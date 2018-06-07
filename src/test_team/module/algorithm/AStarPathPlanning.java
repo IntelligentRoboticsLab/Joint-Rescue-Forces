@@ -80,31 +80,35 @@ public class AStarPathPlanning extends PathPlanning {
 
    @Override
    public PathPlanning calc() {
+       // see Fig 3.13 of Russell & Norvig
+	   
+       System.out.println("[" + this.getClass().getSimpleName() + "] planning from location with ID: " + this.from + " to " + this.targets);
+
        //  1
-       List<EntityID> open = new LinkedList<>();
-       List<EntityID> close = new LinkedList<>();
-       Map<EntityID, Node> nodeMap = new HashMap<>();
+       List<EntityID> open = new LinkedList<>(); // the frontier
+       List<EntityID> close = new LinkedList<>(); // already explored nodes 
+       Map<EntityID, Node> nodeMap = new HashMap<>(); 
     
        //  3
-       open.add(this.from);
+       open.add(this.from); // the frontier is initiated with the start-node
        nodeMap.put(this.from, new Node(null, this.from));
-       close.clear();
+       close.clear(); // the explored list starts empty
     
        while (true) {
            //  4
            if (open.size() < 0) {
-               this.result = null;
+               this.result = null; // failure - no path possible
                return this;
            }
     
            //  5
            Node n = null;
-           for (EntityID id : open) {
+           for (EntityID id : open) { // search nearest neighbor, because the frontier is not a priority queue ordered by Path-Cost
                Node node = nodeMap.get(id);
     
                if (n == null) {
                    n = node;
-               } else if (node.estimate() < n.estimate()) {
+               } else if (node.estimate() < n.estimate()) { // choose the lowest-cost node in the frontier
                    n = node;
                }
            }
@@ -119,20 +123,25 @@ public class AStarPathPlanning extends PathPlanning {
                }
     
                this.result = path;
-               return this;
+
+               System.out.println("[" + this.getClass().getSimpleName() + "] found a path:");
+               for (int i = 0; i < path.size(); i++) {
+                   System.out.println(i + ": " + path.get(i));
+               }
+               return this; // return solution
            }
-           open.remove(n.getID());
-           close.add(n.getID());
+           open.remove(n.getID()); // no queue, so node has to be explictly removed from frontier
+           close.add(n.getID());   // and added to explored list (to prevent cycles)
     
            //  7
            Collection<EntityID> neighbours = this.graph.get(n.getID());
-           for (EntityID neighbour : neighbours) {
+           for (EntityID neighbour : neighbours) { // check each child
                Node m = new Node(n, neighbour);
     
-               if (!open.contains(neighbour) && !close.contains(neighbour)) {
+               if (!open.contains(neighbour) && !close.contains(neighbour)) { // nor in frontier nor in explored list
                    open.add(m.getID());
                    nodeMap.put(neighbour, m);
-               }
+               } // if child is in frontier with higher Path-Cost replace child (found a short-cut)
                else if (open.contains(neighbour) && m.estimate() < nodeMap.get(neighbour).estimate()) {
                    nodeMap.put(neighbour, m);
                }
