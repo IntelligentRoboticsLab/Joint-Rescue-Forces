@@ -5,7 +5,7 @@ trainingData = importRescueData('training.csv');
 X = [trainingData.sTime, trainingData.sDist, ...
      trainingData.sHP  , trainingData.sDamage]';
  
-mode = 1;
+mode = 3;
 switch mode
     case 1    % Binary classifier (alive or dead)
         Y = (trainingData.eHP > 0)';
