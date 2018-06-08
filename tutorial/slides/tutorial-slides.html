@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>MATLAB Machine Learning Tutorial</title>
-<meta name="description" content="MATLAB Machine Learning Tutorial - RoboCup Rescue Simulation League">
+<meta name="description"
+  content="MATLAB Machine Learning Tutorial - RoboCup Rescue Simulation League">
 <meta name="author" content="Luis Gustavo Nardin">
 <meta name="author" content="Arnoud Visser">
 <meta name="author" content="Sebastian Castro">
@@ -11,23 +12,15 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="viewport"
-  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-/>
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-<link rel="stylesheet"
-  href="reveal/css/reveal.min.css"
-/>
-<link rel="stylesheet"
-  href="reveal/css/theme/simple.css"
-  id="theme"
-/>
-<link rel="stylesheet"
-  href="reveal/lib/css/zenburn.css"
-/>
+<link rel="stylesheet" href="reveal/css/reveal.min.css" />
+<link rel="stylesheet" href="reveal/css/theme/simple.css" id="theme" />
+<link rel="stylesheet" href="reveal/lib/css/zenburn.css" />
 <script>
-  document.write( '<link rel="stylesheet" href="reveal/css/print/' +
-      (window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper') +
-      '.css" type="text/css" media="print">' );
+	document.write('<link rel="stylesheet" href="reveal/css/print/'
+			+ (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper')
+			+ '.css" type="text/css" media="print">');
 </script>
 
 </head>
@@ -107,242 +100,242 @@
                 <li>Unsupervised</li>
               </ul>
             </li>
+          </ul>
         </section>
       </section>
       <section>
         <section>
-            <h2>AI and Machine Learning Techniques in RCRS</h2>
+          <h2>AI and Machine Learning Techniques in RCRS</h2>
         </section>
       </section>
       <section>
         <section>
-            <h2>AI for Precomputation</h2>
+          <h2>AI for Precomputation</h2>
+          <ul>
+            <li>Path Planning (A*, Dijkstra)
               <ul>
-                <li>Path Planning (A*, Dijkstra)
-                  <ul>
-                    <li>Graph creation and visualization in MATLAB</li>
-                    <li>Integrate into ADF</li>
-                  </ul>
-                </li>
-                <!--li>Convex Hull</li-->
+                <li>Graph creation and visualization in MATLAB</li>
+                <li>Integrate into ADF</li>
               </ul>
             </li>
-          </ol>
+            <!--li>Convex Hull</li-->
+          </ul>
         </section>
-        <!--#include file="pathplanning-slides.html" --> <!-- doesn't work!-->
+        <!--#include file="pathplanning-slides.html" -->
+        <!-- doesn't work!-->
 
 
-<section>
-<h3>Path-Planning and Artificial Intelligence</h3>
+        <section>
+          <h3>Path-Planning and Artificial Intelligence</h3>
 
-<p>
+          <p>
+          <ul>
+            <li>The question is: 'What is Artificial Intelligence'?
 
-<ul>
-<li>The question is: 'What is Artificial Intelligence'?
+              <div align=center>
+                <img src=images/simple-robot.png width=400>
+              </div>
+          </ul>
 
-<div align=center>
-<img src=images/simple-robot.png width=400>
-</div>
+        </section>
 
-</ul>
+        <section>
+          <h3>Path-Planning and Artificial Intelligence</h3>
 
-</section>
+          <p>
+          <ul>
+            <li>The answer of Russell and Norvig: 'A problem-solving
+              agent'!
 
-<section>
-<h3>Path-Planning and Artificial Intelligence</h3>
+              <div align=center>
+                <img src=images/amai-robot.jpg width=600>
+              </div>
+          </ul>
 
-<p>
+          <p>
 
-<ul>
-<li>The answer of Russell and Norvig: 'A problem-solving agent'!
+            <small>Illustration courtesy Stuart Russell and Peter
+              Norvig, <i>Artificial Intelligence - a Modern Approach</i>,
+              Pearson.
+            </small>
+        </section>
+        <section>
+          <h3>Path-Planning and Artificial Intelligence</h3>
 
-<div align=center>
-<img src=images/amai-robot.jpg width=600>
-</div>
+          <p>
+          <ul>
+            <li>A problem-solving agent applies a <i>search strategy</i> on
+              the problem:
 
-</ul>
+              <div align=center>
+                <img src=images/simple-problem-solving-agent.png width=800>
+              </div>
+            <li>So, we need a problem formulation <small>(both in
+                Java and MATLAB)</small>.
+          </ul>
 
-<p>
+          <p>
 
- <small>Illustration courtesy Stuart Russell and Peter Norvig, <i>Artificial Intelligence - a Modern Approach</i>, Pearson.</small>
-</section>
-<section>
-<h3>Path-Planning and Artificial Intelligence</h3>
+            <small>Illustration courtesy Stuart Russell and Peter
+              Norvig, <i>Artificial Intelligence - a Modern Approach</i>,
+              Pearson.
+            </small>
+        </section>
+        <section>
+          <h3>Path-Planning as Graph Search</h3>
 
-<p>
+          <p>
+          <ul>
+            <li>Imagine an agent that travels in Romania:
 
-<ul>
-<li>A problem-solving agent applies a <i>search strategy</i> on the problem:
+              <div align=center>
+                <img src=images/Romania.jpg width=600>
+              </div>
+            <li>The goal is to get in Bucharest (from Arad).
+          </ul>
 
-<div align=center>
-<img src=images/simple-problem-solving-agent.png width=800>
-</div>
+          <p>
 
-<li>So, we need a problem formulation <small>(both in Java and MATLAB)</small>.
-</ul>
+            <small>Illustration courtesy Stuart Russell and Peter
+              Norvig, <i>Artificial Intelligence - a Modern Approach</i>,
+              Pearson.
+            </small>
+        </section>
+        <section>
+          <h3>Path-Planning as Graph Search</h3>
 
-<p>
+          <p>
+          <ul>
+            <li>So, imagine an agent that travels on the TestMap:
 
- <small>Illustration courtesy Stuart Russell and Peter Norvig, <i>Artificial Intelligence - a Modern Approach</i>, Pearson.</small>
-</section>
-<section>
-<h3>Path-Planning as Graph Search</h3>
+              <div align=center>
+                <img src=images/topo_metro.jpg width=600>
+              </div>
+            <li>The goal is to get in [905, 249, 298, 938, 939, 940] <br>
+              (from node 976).
+          </ul>
 
-<p>
+        </section>
+        <section>
+          <h3>Path-Planning as Graph Search</h3>
 
-<ul>
-<li>Imagine an agent that travels in Romania:
+          <p>
+          <ul>
+            <li>You not only have to find one solution:
 
-<div align=center>
-<img src=images/Romania.jpg width=600>
-</div>
+              <div align=center>
+                <img src=images/topo_paths.png width=600>
+              </div>
+            <li>You also have to decide what is the best solution.
+          </ul>
 
-<li>The goal is to get in Bucharest (from Arad).
-</ul>
+        </section>
+        <section>
+          <h3>Path-Planning as Graph Search</h3>
 
-<p>
+          <p>
+          <ul>
+            <li>And you have to find it fast when the map gets bigger:
 
- <small>Illustration courtesy Stuart Russell and Peter Norvig, <i>Artificial Intelligence - a Modern Approach</i>, Pearson.</small>
-</section>
-<section>
-<h3>Path-Planning as Graph Search</h3>
+              <div align=center>
+                <img src=images/ParisPGraph.jpg width=600>
+              </div> That is where the <i>search strategy</i> gets important<br>
+              (e.g. Dijkstra vs A*)
+          </ul>
 
-<p>
+        </section>
+        <section>
+          <h3>A* Graph Search</h3>
 
-<ul>
-<li>So, imagine an agent that travels on the TestMap:
+          <p>
+          <ul>
+            <li>The Agent Development Framework has an A* implementation:
 
-<div align=center>
-<img src=images/topo_metro.jpg width=600>
-</div>
+              <div align=center>
+                <img src=images/EclipseUniformCostSearch.png width=900>
+              </div> The problem is solved in 9 steps.
+          </ul>
 
-<li>The goal is to get in [905, 249, 298, 938, 939, 940] <br> (from node 976).
-</ul>
+          <p>
 
-</section>
-<section>
-<h3>Path-Planning as Graph Search</h3>
+            <small>This Java code is provided by Shunki Takami <i>et
+                al.</i></small>
+        </section>
 
-<p>
+        <section>
+          <h3>A* Graph Search</h3>
 
-<ul>
-<li>You not only have to find one solution:
+          <p>
+          <ul>
+            <li>The steps resembles Uniform-Cost Search:
 
-<div align=center>
-<img src=images/topo_paths.png width=600>
-</div>
+              <div align=center>
+                <img src=images/UniformCostSearch.png width=900>
+              </div> With a heuristic cost function <font
+              style="font-variant: small-caps">Path-Cost</font> this is A* <br>
+              (with path so-far it is Dijkstra's algorithm).
+          </ul>
 
-<li>You also have to decide what is the best solution.
-</ul>
+          <p>
 
-</section>
-<section>
-<h3>Path-Planning as Graph Search</h3>
+            <small>Illustration courtesy Stuart Russell and Peter
+              Norvig, <i>Artificial Intelligence - a Modern Approach</i>,
+              Pearson.
+            </small>
+        </section>
+        <section>
+          <h3>Multi-Agent decision making</h3>
 
-<p>
+          <p>
+          <ul>
+            <li>The actions of the agents are parameterized with the paths.
 
-<ul>
-<li>And you have to find it fast when the map gets bigger:
+              <div align=center>
+                <img src=images/Mircea-Figure1.1.png width=500>
+              </div>
+            <li>You need full control and insight in the characteristics of
+              the paths.
+          </ul>
 
-<div align=center>
-<img src=images/ParisPGraph.jpg width=600>
-</div>
-That is where the <i>search strategy</i> gets important<br>
-(e.g. Dijkstra vs A*)
-</ul>
+          <p>
 
-</section>
-<section>
-<h3>A* Graph Search</h3>
-
-<p>
-
-<ul>
-<li>The Agent Development Framework has an A* implementation:
-
-<div align=center>
-<img src=images/EclipseUniformCostSearch.png width=900>
-</div>
-The problem is solved in 9 steps.
-</ul>
-
-<p>
-
- <small>This Java code is provided by Shunki Takami <i>et al.</i></small>
-
-</section>
-
-<section>
-<h3>A* Graph Search</h3>
-
-<p>
-
-<ul>
-<li>The steps resembles Uniform-Cost Search:
-
-<div align=center>
-<img src=images/UniformCostSearch.png width=900>
-</div>
-With a heuristic cost function <font style="font-variant: small-caps">Path-Cost</font> this is A* <br>
-(with path so-far it is Dijkstra's algorithm).
-</ul>
-
-<p>
-
- <small>Illustration courtesy Stuart Russell and Peter Norvig, <i>Artificial Intelligence - a Modern Approach</i>, Pearson.</small>
-
-</section>
-<section>
-<h3>Multi-Agent decision making</h3>
-
-<p>
-
-<ul>
-<li>The actions of the agents are parameterized with the paths.
-
-<div align=center>
-<img src=images/Mircea-Figure1.1.png width=500>
-</div>
-<li>You need full control and insight in the characteristics of the paths.
-</ul>
-
-<p>
-
- <small>Illustration courtesy Mircea Traichioiu, <i>Hierarchical Decision Theoretic Planning for RoboCup Rescue Agent Simulation</i>, Master thesis, University of Amsterdam, 2014.</small>
-
-</section>
+            <small>Illustration courtesy Mircea Traichioiu, <i>Hierarchical
+                Decision Theoretic Planning for RoboCup Rescue Agent Simulation</i>,
+              Master thesis, University of Amsterdam, 2014.
+            </small>
+        </section>
 
       </section>
       <!-- ========================================================= -->
       <section>
         <section>
-            <h2>Machine Learning for Precomputation</h2>
+          <h2>Machine Learning for Precomputation</h2>
+          <ul>
+            <li>Clustering (K-Means++)
               <ul>
-                <li>Clustering (K-Means++)
-                  <ul>
-                    <li>Type and collection of data</li>
-                    <li>Visualize using MATLAB</li>
-                    <li>Integrate into ADF</li>
-                  </ul>
-                </li>
+                <li>Type and collection of data</li>
+                <li>Visualize using MATLAB</li>
+                <li>Integrate into ADF</li>
               </ul>
+            </li>
+          </ul>
         </section>
       </section>
       <section>
         <section>
-            <h2>Methodology for Target Selection</h2>
+          <h2>Methodology for Target Selection</h2>
+          <ul>
+            <li>Target selection model
               <ul>
-                <li>Target selection model
-                  <ul>
-                    <li>Traditional Machine Learning (SVM)</li>
-                    <li>Deep Learning</li>
-                  </ul>
-                </li>
-                <li>Collect data</li>
-                <li>Train model in MATLAB</li>
-                <li>Integrate into ADF</li>
-                <li>Refine the target selection model</li>
+                <li>Traditional Machine Learning (SVM)</li>
+                <li>Deep Learning</li>
               </ul>
+            </li>
+            <li>Collect data</li>
+            <li>Train model in MATLAB</li>
+            <li>Integrate into ADF</li>
+            <li>Refine the target selection model</li>
+          </ul>
         </section>
       </section>
 
@@ -350,62 +343,58 @@ With a heuristic cost function <font style="font-variant: small-caps">Path-Cost<
     </div>
   </div>
 
-  <script
-    src="reveal/lib/js/head.min.js"
-  ></script>
-  <script
-    src="reveal/js/reveal.min.js"
-  ></script>
+  <script src="reveal/lib/js/head.min.js"></script>
+  <script src="reveal/js/reveal.min.js"></script>
 
   <script>
-      // Full list of configuration options available here:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize( {
-        controls: true,
-        progress: true,
-        history: false,
-        center: true,
-        
-        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-        
-        // Optional libraries used to extend on reveal.js
-        dependencies: [{
-          src: 'lib/js/classList.js',
-          condition: function () {
-            return !document.body.classList;
-          }
-        }, {
-          src: 'plugin/markdown/showdown.js',
-          condition: function () {
-            return !!document.querySelector( '[data-markdown]' );
-          }
-        }, {
-          src: 'plugin/markdown/markdown.js',
-          condition: function () {
-            return !!document.querySelector( '[data-markdown]' );
-          }
-        }, {
-          src: 'plugin/highlight/highlight.js',
-          async: true,
-          callback: function () {
-            hljs.initHighlightingOnLoad();
-          }
-        }, {
-          src: 'plugin/zoom-js/zoom.js',
-          async: true,
-          condition: function () {
-            return !!document.body.classList;
-          }
-        }, {
-          src: 'plugin/notes/notes.js',
-          async: true,
-          condition: function () {
-            return !!document.body.classList;
-          }
-        }]
-      } );
-    </script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls : true,
+				progress : true,
+				history : false,
+				center : true,
+
+				theme : Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition : Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies : [ {
+					src : 'lib/js/classList.js',
+					condition : function() {
+						return !document.body.classList;
+					}
+				}, {
+					src : 'plugin/markdown/showdown.js',
+					condition : function() {
+						return !!document.querySelector('[data-markdown]');
+					}
+				}, {
+					src : 'plugin/markdown/markdown.js',
+					condition : function() {
+						return !!document.querySelector('[data-markdown]');
+					}
+				}, {
+					src : 'plugin/highlight/highlight.js',
+					async : true,
+					callback : function() {
+						hljs.initHighlightingOnLoad();
+					}
+				}, {
+					src : 'plugin/zoom-js/zoom.js',
+					async : true,
+					condition : function() {
+						return !!document.body.classList;
+					}
+				}, {
+					src : 'plugin/notes/notes.js',
+					async : true,
+					condition : function() {
+						return !!document.body.classList;
+					}
+				} ]
+			});
+		</script>
 
 </body>
 </html>
