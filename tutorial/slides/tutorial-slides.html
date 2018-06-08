@@ -35,21 +35,23 @@
 
   <div class="reveal">
     <div class="slides">
-      <section>
-        <h3>MATLAB Machine Learning Tutorial</h3>
-        <h4>RoboCup Rescue Simulation League</h4>
-        <h5>Arnoud Visser, Luis G. Nardin, and Sebastian Castro</h5>
-      </section>
+	
+		<!-- Title Slide -->
+		<section>
+			<h3>MATLAB Machine Learning Tutorial</h3>
+			<h4>RoboCup Rescue Simulation League</h4>
+			<h5>Arnoud Visser, Luis G. Nardin, and Sebastian Castro</h5>
+		</section>
 
+		<!-- TOC -->
       <section>
         <section>
           <h2>Table of Contents</h2>
           <ol>
-            <li>Introduction of AI and Machine Learning (ML)</li>
-            <li>AI and Machine Learning Techniques
-              <ul>
-                <li>Supervised</li>
-                <li>Unsupervised</li>
+            <li>Introduction to AI and Machine Learning (ML)              <ul>
+				<li>Artificial intelligence</li>
+                <li>Machine learning</li>
+				<li>Deep learning</li>
               </ul>
             </li>
             <li>AI and Machine Learning Techniques in RCRS</li>
@@ -97,18 +99,150 @@
           </ol>
         </section>
       </section>
+	  
+	  <!-- Introduction to AI and ML Section -->
       <section>
         <section>
-          <h2>Introduction of AI and Machine Learning (ML)</h2>
-          <ul>
-            <li>AI and Machine Learning Techniques
-              <ul>
-                <li>Supervised</li>
-                <li>Unsupervised</li>
-              </ul>
-            </li>
+			<h2>Introduction to AI and Machine Learning (ML)</h2>
         </section>
-      </section>
+		<section>
+			<h3>Introduction to AI</h3>
+			<p>
+			<ul>
+				<li>The question is: 'What is Artificial Intelligence'?
+				<div align=center>
+				<img src=images/simple-robot.png width=400>
+				</div>
+			</ul>
+		</section>
+		<section>
+			<h3>Introduction to AI</h3>
+			<p>
+			<ul>
+				<li>The answer of Russell and Norvig: 'A problem-solving agent'!
+				<div align=center>
+				<img src=images/amai-robot.jpg width=600>
+				</div>
+			</ul>
+			<p>
+			<small>Illustration courtesy Stuart Russell and Peter Norvig, <i>Artificial Intelligence - a Modern Approach</i>, Pearson.</small>
+		</section>
+		<section>
+		    <h3>Types of AI Problems</h3>
+			<ul>
+				<li>Basically... everything robots do!</li>
+			</ul>
+			<div align=center>
+			<img src=images/wikipedia_ai_problems.png>
+			</div>
+			<small>Source: <a href="https://en.wikipedia.org/wiki/Artificial_intelligence">Wikipedia</a></small>
+		</section>
+		<section>
+		    <h3>Terminology</h3>
+			<div align=center>
+			<img src=images/ai_ml_dl.jpg>
+			</div>
+			<small>Source: <a href="https://medium.com/intro-to-artificial-intelligence/deep-learning-series-1-intro-to-deep-learning-abb1780ee20">Deep Learning Series 1: Intro to Deep Learning, Medium, Dhanoop Karunakaran</a></small>
+		</section>
+		<section>
+			<h3>Types of AI Algorithms</h3>
+			<div align=center>
+			<img src=images/wikipedia_ai_tools.png>
+			</div>
+			<small>Source: <a href="https://en.wikipedia.org/wiki/Artificial_intelligence">Wikipedia</a></small>
+		</section>
+		<section>
+		    <h3>Machine Learning</h3>
+			<ul>
+				<li>Subset of AI</li>
+				<li>Machine modifies its own algorithm/model/policy/etc. using data</li>
+				<li>Human controls the "rules" of how this "learning" occurs, e.g.
+					<ul>
+						<li>Choosing a model and its initial state</li>
+						<li>Choosing a learning algorithm</li>
+						<li>Supplying data</li>
+						<li>Enforcing constraints</li>
+					</ul>
+				</li>
+				<li>Machine applies learning results autonomously on new data/environments/conditions/etc.</li>
+			</ul>
+		</section>
+		<section>
+			<h3>Types of ML Problems (and Examples)</h3>
+			<ul>
+				<li><b>Classification:</b>
+					<ul>
+						<li><i>Binary:</i> Detecting occupancy in a room</li>
+						<li><i>Multi-class:</i> Detecting the type of animal in an image</li>
+					</ul>
+				</li>
+				<li><b>Regression:</b> Predicting housing costs</li>
+				<li><b>Object detection:</b> Locating all pedestrians in an image</li>
+				<li><b>Generation:</b> Computer-generated music from input genre</li>
+			</ul>
+		</section>
+		<section>
+		    <h3>Types of ML: Unsupervised Learning</h3>
+			<ul>
+				<li>Finding patterns from <b>unlabeled</b> data</li>
+				<li>Machine develops its own insights and we have to make sense of them</li>
+			</ul>
+			<div align=center>
+			<img src=images/clustering_example.png>
+			</div>
+			<small>Source: MathWorks Documentation</small>
+		</section>
+		<section>
+		    <h3>Types of ML: Supervised Learning</h3>
+			<ul>
+				<li>Determining a model from <b>labeled</b> data</li>
+				<li>Goal: Identify labels accurately on new, independent data
+			</ul>			
+			<div align=center>
+			<img src=images/supervised_example.png>
+			</div>
+			<small>Source: MathWorks Documentation</small>
+		</section>
+		<section>
+			<h3>Types of ML: Supervised Learning</h3>
+			<ul>
+				<li><b>Perceptron:</b> The first supervised learning approach</li>
+				<li>Use optimization to parameterize a linear classifier</li>
+				<li>Other supervised learning approaches extend this with more complex models and learning techniques</li>
+			</ul>
+			<div align=center>
+			<img src=images/perceptron.gif width=700>
+			</div>
+			<small>Source: <a href="https://devashishshankar.wordpress.com/2015/11/13/demystifying-deep-neural-networks/">Demystifying deep neural networks, by Devashish Shankar</a></small>
+		</section>
+		<section>
+		    <h3>Types of ML: Reinforcement Learning</h3>
+			<ul>
+				<li>Technically, a type of supervised learning</li>
+				<li>Human provides a mathematical cost/reward function</li>
+				<li>Machine repeatedly acts in simulation or real-world trials, evaluates reward, and "learns" to maximize reward over time</li>
+				<div align=center>
+				<img src=images/deepmind.gif>
+				</div>
+				<small>Source: Google DeepMind</small>
+			</ul>
+		</section>
+		<section>
+		    <h3>Deep Learning</h3>
+			<ul>
+				<li>Not a type of machine learning -- can be unsupervised, supervised, or reinforcement</li>
+				<li>Example: "Deep reinforcement learning"
+				<li>"Deep" refers to neural networks with many layers</li>
+				<li>More layers = more nonlinear = better explains complex systems</li>
+				<div align=center>
+				<img src=images/neural_net_example.png width=600>
+				</div>				
+				<small>Source <a href="https://towardsdatascience.com/applied-deep-learning-part-1-artificial-neural-networks-d7834f67a4f6">Applied Deep Learning - Part 1: Artificial Neural Networks, Towards Data Science, by Arden Dertat</a></small>
+			</ul>
+		</section>
+	</section>
+
+	  <!-- AI and ML in RCRS -->
       <section>
         <section>
             <h2>AI and Machine Learning Techniques in RCRS</h2>
@@ -132,40 +266,6 @@
         <!--#include file="pathplanning-slides.html" --> <!-- doesn't work!-->
 
 
-<section>
-<h3>Path-Planning and Artificial Intelligence</h3>
-
-<p>
-
-<ul>
-<li>The question is: 'What is Artificial Intelligence'?
-
-<div align=center>
-<img src=images/simple-robot.png width=400>
-</div>
-
-</ul>
-
-</section>
-
-<section>
-<h3>Path-Planning and Artificial Intelligence</h3>
-
-<p>
-
-<ul>
-<li>The answer of Russell and Norvig: 'A problem-solving agent'!
-
-<div align=center>
-<img src=images/amai-robot.jpg width=600>
-</div>
-
-</ul>
-
-<p>
-
- <small>Illustration courtesy Stuart Russell and Peter Norvig, <i>Artificial Intelligence - a Modern Approach</i>, Pearson.</small>
-</section>
 <section>
 <h3>Path-Planning and Artificial Intelligence</h3>
 
