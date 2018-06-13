@@ -31,37 +31,36 @@ public class MATLABHumanDetector extends HumanDetector {
   private MatlabEngine ml;
   
   
-  public MATLABHumanDetector(AgentInfo ai, WorldInfo wi, ScenarioInfo si,
-      ModuleManager moduleManager, DevelopData developData) {
-    super(ai, wi, si, moduleManager, developData);
+  public MATLABHumanDetector( AgentInfo ai, WorldInfo wi, ScenarioInfo si, ModuleManager moduleManager, DevelopData developData ) {
+    super( ai, wi, si, moduleManager, developData );
     
     this.result = null;
     
-    switch(scenarioInfo.getMode()) {
+    switch ( scenarioInfo.getMode() ) {
       case PRECOMPUTATION_PHASE:
         this.clustering = moduleManager.getModule(
             "SampleHumanDetector.Clustering",
-            "adf.sample.module.algorithm.SampleKMeans");
+            "adf.sample.module.algorithm.SampleKMeans" );
         break;
       case PRECOMPUTED:
         this.clustering = moduleManager.getModule(
             "SampleHumanDetector.Clustering",
-            "adf.sample.module.algorithm.SampleKMeans");
+            "adf.sample.module.algorithm.SampleKMeans" );
         break;
       case NON_PRECOMPUTE:
         this.clustering = moduleManager.getModule(
             "MATLABHumanDetector.Clustering",
-            "matlab.module.algorithm.MATLABKMeans");
+            "matlab.module.algorithm.MATLABKMeans" );
         break;
     }
-    registerModule(this.clustering);
+    registerModule( this.clustering );
   }
   
   
   @Override
-  public HumanDetector updateInfo(MessageManager messageManager) {
-    super.updateInfo(messageManager);
-    if(this.getCountUpdateInfo() > 1) {
+  public HumanDetector updateInfo( MessageManager messageManager ) {
+    super.updateInfo( messageManager );
+    if ( this.getCountUpdateInfo() > 1 ) {
       return this;
     }
     
@@ -72,35 +71,35 @@ public class MATLABHumanDetector extends HumanDetector {
   @Override
   public HumanDetector calc() {
     Human transportHuman = this.agentInfo.someoneOnBoard();
-    if(transportHuman != null) {
+    if ( transportHuman != null ) {
       this.result = transportHuman.getID();
       return this;
     }
-    if(this.result != null) {
-      Human target = (Human) this.worldInfo.getEntity(this.result);
-      if(target != null) {
-        if(!target.isHPDefined() || target.getHP() == 0) {
+    if ( this.result != null ) {
+      Human target = (Human) this.worldInfo.getEntity( this.result );
+      if ( target != null ) {
+        if ( !target.isHPDefined() || target.getHP() == 0 ) {
           this.result = null;
-        } else if(!target.isPositionDefined()) {
+        } else if ( !target.isPositionDefined() ) {
           this.result = null;
         } else {
-          StandardEntity position = this.worldInfo.getPosition(target);
-          if(position != null) {
+          StandardEntity position = this.worldInfo.getPosition( target );
+          if ( position != null ) {
             StandardEntityURN positionURN = position.getStandardURN();
-            if(positionURN == REFUGE || positionURN == AMBULANCE_TEAM) {
+            if ( positionURN == REFUGE || positionURN == AMBULANCE_TEAM ) {
               this.result = null;
             }
           }
         }
       }
     }
-    if(this.result == null) {
-      if(clustering == null) {
+    if ( this.result == null ) {
+      if ( clustering == null ) {
         this.result = this.calcTargetInWorld();
         return this;
       }
-      this.result = this.calcTargetInCluster(clustering);
-      if(this.result == null) {
+      this.result = this.calcTargetInCluster( clustering );
+      if ( this.result == null ) {
         this.result = this.calcTargetInWorld();
       }
     }
@@ -108,70 +107,71 @@ public class MATLABHumanDetector extends HumanDetector {
   }
   
   
-  private EntityID calcTargetInCluster(Clustering clustering) {
-    int clusterIndex = clustering.getClusterIndex(this.agentInfo.getID());
+  private EntityID calcTargetInCluster( Clustering clustering ) {
+    int clusterIndex = clustering.getClusterIndex( this.agentInfo.getID() );
     Collection<StandardEntity> elements = clustering
-        .getClusterEntities(clusterIndex);
-    if(elements == null || elements.isEmpty()) {
+        .getClusterEntities( clusterIndex );
+    if ( elements == null || elements.isEmpty() ) {
       return null;
     }
     
     List<Human> rescueTargets = new ArrayList<>();
     List<Human> loadTargets = new ArrayList<>();
-    for(StandardEntity next : this.worldInfo.getEntitiesOfType(AMBULANCE_TEAM,
-        FIRE_BRIGADE, POLICE_FORCE)) {
+    for ( StandardEntity next : this.worldInfo
+        .getEntitiesOfType( AMBULANCE_TEAM, FIRE_BRIGADE, POLICE_FORCE ) ) {
       Human h = (Human) next;
-      if(this.agentInfo.getID().getValue() == h.getID().getValue()) {
+      if ( this.agentInfo.getID().getValue() == h.getID().getValue() ) {
         continue;
       }
-      StandardEntity positionEntity = this.worldInfo.getPosition(h);
-      if(positionEntity != null && elements.contains(positionEntity)
-          || elements.contains(h)) {
-        if(h.isHPDefined() && h.isBuriednessDefined() && h.getHP() > 0
-            && h.getBuriedness() > 0) {
-          rescueTargets.add(h);
+      StandardEntity positionEntity = this.worldInfo.getPosition( h );
+      if ( positionEntity != null && elements.contains( positionEntity )
+          || elements.contains( h ) ) {
+        if ( h.isHPDefined() && h.isBuriednessDefined() && h.getHP() > 0
+            && h.getBuriedness() > 0 ) {
+          rescueTargets.add( h );
         }
       }
     }
-    for(StandardEntity next : this.worldInfo.getEntitiesOfType(CIVILIAN)) {
+    for ( StandardEntity next : this.worldInfo.getEntitiesOfType( CIVILIAN ) ) {
       Human h = (Human) next;
-      StandardEntity positionEntity = this.worldInfo.getPosition(h);
-      if(positionEntity != null && positionEntity instanceof Area) {
-        if(elements.contains(positionEntity)) {
-          if(h.isHPDefined() && h.getHP() > 0) {
-            if(h.isBuriednessDefined() && h.getBuriedness() > 0) {
-              rescueTargets.add(h);
+      StandardEntity positionEntity = this.worldInfo.getPosition( h );
+      if ( positionEntity != null && positionEntity instanceof Area ) {
+        if ( elements.contains( positionEntity ) ) {
+          if ( h.isHPDefined() && h.getHP() > 0 ) {
+            if ( h.isBuriednessDefined() && h.getBuriedness() > 0 ) {
+              rescueTargets.add( h );
             } else {
-              if(h.isDamageDefined() && h.getDamage() > 0
-                  && positionEntity.getStandardURN() != REFUGE) {
-                loadTargets.add(h);
+              if ( h.isDamageDefined() && h.getDamage() > 0
+                  && positionEntity.getStandardURN() != REFUGE ) {
+                loadTargets.add( h );
               }
             }
           }
         }
       }
     }
-    if(rescueTargets.size() > 0) {
+    if ( rescueTargets.size() > 0 ) {
       
       try {
-        if(MatlabEngine.findMatlab().length > 0) {
-          System.out.println("USING MATLAB ");
+        if ( MatlabEngine.findMatlab().length > 0 ) {
+          System.out.println( "USING MATLAB " );
           this.ml = MatlabEngine.connectMatlab();
-          int value = this.ml.feval("selectTargets", 100, 2000, 7000, 80);
-          System.out.println((int) value);
+          int value = this.ml.feval( "selectTargets", 100, 2000, 7000, 80 );
+          System.out.println( (int) value );
           this.ml.close();
         }
-      } catch(InterruptedException | ExecutionException e) {
+      } catch ( InterruptedException | ExecutionException e ) {
         e.printStackTrace();
       }
       
       rescueTargets
-          .sort(new DistanceSorter(this.worldInfo, this.agentInfo.me()));
-      return rescueTargets.get(0).getID();
+          .sort( new DistanceSorter( this.worldInfo, this.agentInfo.me() ) );
+      return rescueTargets.get( 0 ).getID();
     }
-    if(loadTargets.size() > 0) {
-      loadTargets.sort(new DistanceSorter(this.worldInfo, this.agentInfo.me()));
-      return loadTargets.get(0).getID();
+    if ( loadTargets.size() > 0 ) {
+      loadTargets
+          .sort( new DistanceSorter( this.worldInfo, this.agentInfo.me() ) );
+      return loadTargets.get( 0 ).getID();
     }
     return null;
   }
@@ -180,43 +180,44 @@ public class MATLABHumanDetector extends HumanDetector {
   private EntityID calcTargetInWorld() {
     List<Human> rescueTargets = new ArrayList<>();
     List<Human> loadTargets = new ArrayList<>();
-    for(StandardEntity next : this.worldInfo.getEntitiesOfType(AMBULANCE_TEAM,
-        FIRE_BRIGADE, POLICE_FORCE)) {
+    for ( StandardEntity next : this.worldInfo
+        .getEntitiesOfType( AMBULANCE_TEAM, FIRE_BRIGADE, POLICE_FORCE ) ) {
       Human h = (Human) next;
-      if(this.agentInfo.getID().getValue() != h.getID().getValue()) {
-        StandardEntity positionEntity = this.worldInfo.getPosition(h);
-        if(positionEntity != null && h.isHPDefined()
-            && h.isBuriednessDefined()) {
-          if(h.getHP() > 0 && h.getBuriedness() > 0) {
-            rescueTargets.add(h);
+      if ( this.agentInfo.getID().getValue() != h.getID().getValue() ) {
+        StandardEntity positionEntity = this.worldInfo.getPosition( h );
+        if ( positionEntity != null && h.isHPDefined()
+            && h.isBuriednessDefined() ) {
+          if ( h.getHP() > 0 && h.getBuriedness() > 0 ) {
+            rescueTargets.add( h );
           }
         }
       }
     }
-    for(StandardEntity next : this.worldInfo.getEntitiesOfType(CIVILIAN)) {
+    for ( StandardEntity next : this.worldInfo.getEntitiesOfType( CIVILIAN ) ) {
       Human h = (Human) next;
-      StandardEntity positionEntity = this.worldInfo.getPosition(h);
-      if(positionEntity != null && positionEntity instanceof Area) {
-        if(h.isHPDefined() && h.getHP() > 0) {
-          if(h.isBuriednessDefined() && h.getBuriedness() > 0) {
-            rescueTargets.add(h);
+      StandardEntity positionEntity = this.worldInfo.getPosition( h );
+      if ( positionEntity != null && positionEntity instanceof Area ) {
+        if ( h.isHPDefined() && h.getHP() > 0 ) {
+          if ( h.isBuriednessDefined() && h.getBuriedness() > 0 ) {
+            rescueTargets.add( h );
           } else {
-            if(h.isDamageDefined() && h.getDamage() > 0
-                && positionEntity.getStandardURN() != REFUGE) {
-              loadTargets.add(h);
+            if ( h.isDamageDefined() && h.getDamage() > 0
+                && positionEntity.getStandardURN() != REFUGE ) {
+              loadTargets.add( h );
             }
           }
         }
       }
     }
-    if(rescueTargets.size() > 0) {
+    if ( rescueTargets.size() > 0 ) {
       rescueTargets
-          .sort(new DistanceSorter(this.worldInfo, this.agentInfo.me()));
-      return rescueTargets.get(0).getID();
+          .sort( new DistanceSorter( this.worldInfo, this.agentInfo.me() ) );
+      return rescueTargets.get( 0 ).getID();
     }
-    if(loadTargets.size() > 0) {
-      loadTargets.sort(new DistanceSorter(this.worldInfo, this.agentInfo.me()));
-      return loadTargets.get(0).getID();
+    if ( loadTargets.size() > 0 ) {
+      loadTargets
+          .sort( new DistanceSorter( this.worldInfo, this.agentInfo.me() ) );
+      return loadTargets.get( 0 ).getID();
     }
     return null;
   }
@@ -229,9 +230,9 @@ public class MATLABHumanDetector extends HumanDetector {
   
   
   @Override
-  public HumanDetector precompute(PrecomputeData precomputeData) {
-    super.precompute(precomputeData);
-    if(this.getCountPrecompute() >= 2) {
+  public HumanDetector precompute( PrecomputeData precomputeData ) {
+    super.precompute( precomputeData );
+    if ( this.getCountPrecompute() >= 2 ) {
       return this;
     }
     return this;
@@ -239,9 +240,9 @@ public class MATLABHumanDetector extends HumanDetector {
   
   
   @Override
-  public HumanDetector resume(PrecomputeData precomputeData) {
-    super.resume(precomputeData);
-    if(this.getCountResume() >= 2) {
+  public HumanDetector resume( PrecomputeData precomputeData ) {
+    super.resume( precomputeData );
+    if ( this.getCountResume() >= 2 ) {
       return this;
     }
     return this;
@@ -251,7 +252,7 @@ public class MATLABHumanDetector extends HumanDetector {
   @Override
   public HumanDetector preparate() {
     super.preparate();
-    if(this.getCountPreparate() >= 2) {
+    if ( this.getCountPreparate() >= 2 ) {
       return this;
     }
     return this;
@@ -264,15 +265,15 @@ public class MATLABHumanDetector extends HumanDetector {
     private WorldInfo      worldInfo;
     
     
-    DistanceSorter(WorldInfo wi, StandardEntity reference) {
+    DistanceSorter( WorldInfo wi, StandardEntity reference ) {
       this.reference = reference;
       this.worldInfo = wi;
     }
     
     
-    public int compare(StandardEntity a, StandardEntity b) {
-      int d1 = this.worldInfo.getDistance(this.reference, a);
-      int d2 = this.worldInfo.getDistance(this.reference, b);
+    public int compare( StandardEntity a, StandardEntity b ) {
+      int d1 = this.worldInfo.getDistance( this.reference, a );
+      int d2 = this.worldInfo.getDistance( this.reference, b );
       return d1 - d2;
     }
   }

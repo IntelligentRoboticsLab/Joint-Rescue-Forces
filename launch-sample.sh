@@ -1,15 +1,15 @@
 #!/bin/sh
 
-LOADER="matlab.Loader"
+LOADER="adf.sample.SampleLoader"
 
 cd `dirname $0`
 
 PWD=`pwd`
 CP=`find $PWD/library/ -name '*.jar' ! -name '*-sources.jar' | awk -F '\n' -v ORS=':' '{print}'`
-CP=$CP'/data/tools/matlab/R2018a/extern/engines/java/jar/engine.jar:'
+CP=$CP
 
 if [ ! -z "$1" ]; then
-    java -Djava.library.path=/data/tools/matlab/R2018a/bin/glnxa64 -classpath "${CP}./build" adf.Main ${LOADER} $*
+  java -classpath "${CP}./build" adf.Main ${LOADER} $*
 else
     echo "Options:"
     echo "-t [FB],[FS],[PF],[PO],[AT],[AC]\tnumber of agents"
@@ -24,6 +24,6 @@ else
     echo "-h [HOST]\t\t\t\tRCRS server host (port:7000)"
     echo "-local\t\t\t\t\t[alias] -h localhost"
     echo "-pre [0|1]\t\t\t\tPrecompute flag"
-    echo "-d [0|1]\t\t\t\tDebug flag"	       
+    echo "-d [0|1]\t\t\t\tDebug flag"
     echo "-mc [FILE]\t\t\t\tModuleConfig file name"
 fi

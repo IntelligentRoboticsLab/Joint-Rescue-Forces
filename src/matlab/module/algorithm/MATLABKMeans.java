@@ -51,33 +51,32 @@ public class MATLABKMeans extends StaticClustering {
   
   
   /* METHODS */
-  public MATLABKMeans(AgentInfo ai, WorldInfo wi, ScenarioInfo si,
-      ModuleManager moduleManager, DevelopData developData) {
-    super(ai, wi, si, moduleManager, developData);
+  public MATLABKMeans( AgentInfo ai, WorldInfo wi, ScenarioInfo si, ModuleManager moduleManager, DevelopData developData ) {
+    super( ai, wi, si, moduleManager, developData );
     
     this.clusterSize = developData
-        .getInteger("matlab.module.MATLABKMeans.clusterSize", 10);
+        .getInteger( "matlab.module.MATLABKMeans.clusterSize", 10 );
     this.assignAgentsFlag = developData
-        .getBoolean("matlab.module.MATLABKMeans.assignAgentsFlag", true);
+        .getBoolean( "matlab.module.MATLABKMeans.assignAgentsFlag", true );
     this.distanceMetric = developData
-        .getString("matlab.module.MATLABKMeans.distanceMetric", "cityblock");
-    this.maxIter = developData.getDouble("matlab.module.MATLABKMeans.maxIter",
-        100);
+        .getString( "matlab.module.MATLABKMeans.distanceMetric", "cityblock" );
+    this.maxIter = developData.getDouble( "matlab.module.MATLABKMeans.maxIter",
+        100 );
     
     this.clusterEntityIDsList = new ArrayList<>();
     this.clusterEntitiesList = new HashMap<>();
-    this.entities = wi.getEntitiesOfType(StandardEntityURN.ROAD,
+    this.entities = wi.getEntitiesOfType( StandardEntityURN.ROAD,
         StandardEntityURN.HYDRANT, StandardEntityURN.BUILDING,
         StandardEntityURN.REFUGE, StandardEntityURN.GAS_STATION,
         StandardEntityURN.AMBULANCE_CENTRE, StandardEntityURN.FIRE_STATION,
-        StandardEntityURN.POLICE_OFFICE);
+        StandardEntityURN.POLICE_OFFICE );
   }
   
   
   @Override
-  public Clustering updateInfo(MessageManager messageManager) {
-    super.updateInfo(messageManager);
-    if(this.getCountUpdateInfo() >= 2) {
+  public Clustering updateInfo( MessageManager messageManager ) {
+    super.updateInfo( messageManager );
+    if ( this.getCountUpdateInfo() >= 2 ) {
       return this;
     }
     this.clusterEntitiesList.clear();
@@ -86,39 +85,39 @@ public class MATLABKMeans extends StaticClustering {
   
   
   @Override
-  public Clustering precompute(PrecomputeData precomputeData) {
-    super.precompute(precomputeData);
-    if(this.getCountPrecompute() >= 2) {
+  public Clustering precompute( PrecomputeData precomputeData ) {
+    super.precompute( precomputeData );
+    if ( this.getCountPrecompute() >= 2 ) {
       return this;
     }
     long startTime = System.currentTimeMillis();
     this.calcStandard();
-    System.out.println(System.currentTimeMillis() - startTime);
+    System.out.println( System.currentTimeMillis() - startTime );
     // write
-    precomputeData.setInteger(KEY_CLUSTER_SIZE, this.clusterSize);
-    for(int i = 0; i < this.clusterSize; i++) {
-      precomputeData.setEntityIDList(KEY_CLUSTER_ENTITY + i,
-          this.clusterEntityIDsList.get(i));
+    precomputeData.setInteger( KEY_CLUSTER_SIZE, this.clusterSize );
+    for ( int i = 0; i < this.clusterSize; i++ ) {
+      precomputeData.setEntityIDList( KEY_CLUSTER_ENTITY + i,
+          this.clusterEntityIDsList.get( i ) );
     }
-    precomputeData.setBoolean(KEY_ASSIGN_AGENT, this.assignAgentsFlag);
+    precomputeData.setBoolean( KEY_ASSIGN_AGENT, this.assignAgentsFlag );
     return this;
   }
   
   
   @Override
-  public Clustering resume(PrecomputeData precomputeData) {
-    super.resume(precomputeData);
-    if(this.getCountResume() >= 2) {
+  public Clustering resume( PrecomputeData precomputeData ) {
+    super.resume( precomputeData );
+    if ( this.getCountResume() >= 2 ) {
       return this;
     }
     // read
-    this.clusterSize = precomputeData.getInteger(KEY_CLUSTER_SIZE);
-    this.clusterEntityIDsList = new ArrayList<>(this.clusterSize);
-    for(int i = 0; i < this.clusterSize; i++) {
-      this.clusterEntityIDsList.add(i,
-          precomputeData.getEntityIDList(KEY_CLUSTER_ENTITY + i));
+    this.clusterSize = precomputeData.getInteger( KEY_CLUSTER_SIZE );
+    this.clusterEntityIDsList = new ArrayList<>( this.clusterSize );
+    for ( int i = 0; i < this.clusterSize; i++ ) {
+      this.clusterEntityIDsList.add( i,
+          precomputeData.getEntityIDList( KEY_CLUSTER_ENTITY + i ) );
     }
-    this.assignAgentsFlag = precomputeData.getBoolean(KEY_ASSIGN_AGENT);
+    this.assignAgentsFlag = precomputeData.getBoolean( KEY_ASSIGN_AGENT );
     return this;
   }
   
@@ -126,12 +125,12 @@ public class MATLABKMeans extends StaticClustering {
   @Override
   public Clustering preparate() {
     super.preparate();
-    if(this.getCountPreparate() >= 2) {
+    if ( this.getCountPreparate() >= 2 ) {
       return this;
     }
     long startTime = System.currentTimeMillis();
     this.calcStandard();
-    System.out.println(System.currentTimeMillis() - startTime);
+    System.out.println( System.currentTimeMillis() - startTime );
     return this;
   }
   
@@ -144,15 +143,15 @@ public class MATLABKMeans extends StaticClustering {
   
   
   @Override
-  public int getClusterIndex(StandardEntity entity) {
-    return this.getClusterIndex(entity.getID());
+  public int getClusterIndex( StandardEntity entity ) {
+    return this.getClusterIndex( entity.getID() );
   }
   
   
   @Override
-  public int getClusterIndex(EntityID id) {
-    for(int i = 0; i < this.clusterSize; i++) {
-      if(this.clusterEntityIDsList.get(i).contains(id)) {
+  public int getClusterIndex( EntityID id ) {
+    for ( int i = 0; i < this.clusterSize; i++ ) {
+      if ( this.clusterEntityIDsList.get( i ).contains( id ) ) {
         return i;
       }
     }
@@ -161,23 +160,23 @@ public class MATLABKMeans extends StaticClustering {
   
   
   @Override
-  public Collection<StandardEntity> getClusterEntities(int index) {
-    List<StandardEntity> result = this.clusterEntitiesList.get(index);
-    if(result == null || result.isEmpty()) {
-      List<EntityID> list = this.clusterEntityIDsList.get(index);
-      result = new ArrayList<>(list.size());
-      for(int i = 0; i < list.size(); i++) {
-        result.add(i, this.worldInfo.getEntity(list.get(i)));
+  public Collection<StandardEntity> getClusterEntities( int index ) {
+    List<StandardEntity> result = this.clusterEntitiesList.get( index );
+    if ( result == null || result.isEmpty() ) {
+      List<EntityID> list = this.clusterEntityIDsList.get( index );
+      result = new ArrayList<>( list.size() );
+      for ( int i = 0; i < list.size(); i++ ) {
+        result.add( i, this.worldInfo.getEntity( list.get( i ) ) );
       }
-      this.clusterEntitiesList.put(index, result);
+      this.clusterEntitiesList.put( index, result );
     }
     return result;
   }
   
   
   @Override
-  public Collection<EntityID> getClusterEntityIDs(int index) {
-    return this.clusterEntityIDsList.get(index);
+  public Collection<EntityID> getClusterEntityIDs( int index ) {
+    return this.clusterEntityIDsList.get( index );
   }
   
   
@@ -193,89 +192,97 @@ public class MATLABKMeans extends StaticClustering {
     try {
       MatlabEngine ml;
       
-      System.out.println("START MATLAB ");
-      ml = MatlabEngine.startMatlab();
+      if ( MatlabEngine.findMatlab().length > 0 ) {
+        System.out.println( "CONNECT MATLAB" );
+        ml = MatlabEngine.connectMatlab();
+      } else {
+        System.out.println( "START MATLAB" );
+        ml = MatlabEngine.startMatlab();
+      }
       
       // Prepare data for Matlab k-means++ clustering
       Map<String, EntityID> xyId = new HashMap<String, EntityID>();
       Pair<Integer, Integer> location;
       double[][] mlInput = new double[this.entities.size()][2];
-      for(StandardEntity entity : this.entities) {
-        location = this.worldInfo.getLocation(entity);
+      for ( StandardEntity entity : this.entities ) {
+        location = this.worldInfo.getLocation( entity );
         
         mlInput[i][0] = location.first();
         mlInput[i][1] = location.second();
         
-        xyId.put(Double.toString(mlInput[i][0]) + ","
-            + Double.toString(mlInput[i][1]), entity.getID());
+        xyId.put( Double.toString( mlInput[i][0] ) + ","
+            + Double.toString( mlInput[i][1] ), entity.getID() );
         
         i++;
       }
       
       // Run k-means++ clustering
-      Object[] mlOutput = ml.feval(2, "kmeans", (Object) mlInput,
+      Object[] mlOutput = ml.feval( 2, "kmeans", (Object) mlInput,
           this.clusterSize, DISTANCE, this.distanceMetric, MAX_ITER,
-          this.maxIter);
+          this.maxIter );
       
       double[] mlIndex = (double[]) mlOutput[0];
-      @SuppressWarnings("unused")
+      @SuppressWarnings ( "unused" )
       double[][] mlCenter = (double[][]) mlOutput[1]; // TODO Allocation to
                                                       // the
                                                       // closest cluster
       
       ml.close();
       this.clusterEntitiesList = new HashMap<Integer, List<StandardEntity>>(
-          this.clusterSize);
+          this.clusterSize );
       this.clusterEntityIDsList = new ArrayList<List<EntityID>>(
-          this.clusterSize);
+          this.clusterSize );
       
-      for(i = 0; i < this.clusterSize; i++) {
-        this.clusterEntitiesList.put(i, new ArrayList<StandardEntity>());
-        this.clusterEntityIDsList.add(new ArrayList<EntityID>());
+      for ( i = 0; i < this.clusterSize; i++ ) {
+        this.clusterEntitiesList.put( i, new ArrayList<StandardEntity>() );
+        this.clusterEntityIDsList.add( new ArrayList<EntityID>() );
       }
       
-      for(i = 0; i < mlIndex.length; i++) {
-        int clusterIndex = Double.valueOf(mlIndex[i]).intValue() - 1;
+      for ( i = 0; i < mlIndex.length; i++ ) {
+        int clusterIndex = Double.valueOf( mlIndex[i] ).intValue() - 1;
         
-        EntityID entityId = xyId.get(Double.toString(mlInput[i][0]) + ","
-            + Double.toString(mlInput[i][1]));
+        EntityID entityId = xyId.get( Double.toString( mlInput[i][0] ) + ","
+            + Double.toString( mlInput[i][1] ) );
         
-        StandardEntity entity = this.worldInfo.getEntity(entityId);
+        StandardEntity entity = this.worldInfo.getEntity( entityId );
         
-        this.clusterEntitiesList.get(clusterIndex).add(entity);
+        this.clusterEntitiesList.get( clusterIndex ).add( entity );
       }
       
-      for(i = 0; i < this.clusterEntitiesList.size(); i++) {
-        for(StandardEntity entity : this.clusterEntitiesList.get(i)) {
-          this.clusterEntityIDsList.get(i).add(entity.getID());
+      for ( i = 0; i < this.clusterEntitiesList.size(); i++ ) {
+        for ( StandardEntity entity : this.clusterEntitiesList.get( i ) ) {
+          this.clusterEntityIDsList.get( i ).add( entity.getID() );
         }
       }
       
-      if(this.assignAgentsFlag) {
+      if ( this.assignAgentsFlag ) {
         List<StandardEntity> firebrigadeList = new ArrayList<StandardEntity>(
-            this.worldInfo.getEntitiesOfType(StandardEntityURN.FIRE_BRIGADE));
+            this.worldInfo
+                .getEntitiesOfType( StandardEntityURN.FIRE_BRIGADE ) );
         List<StandardEntity> policeforceList = new ArrayList<StandardEntity>(
-            this.worldInfo.getEntitiesOfType(StandardEntityURN.POLICE_FORCE));
+            this.worldInfo
+                .getEntitiesOfType( StandardEntityURN.POLICE_FORCE ) );
         List<StandardEntity> ambulanceteamList = new ArrayList<StandardEntity>(
-            this.worldInfo.getEntitiesOfType(StandardEntityURN.AMBULANCE_TEAM));
-        this.assignAgents(firebrigadeList);
-        this.assignAgents(policeforceList);
-        this.assignAgents(ambulanceteamList);
+            this.worldInfo
+                .getEntitiesOfType( StandardEntityURN.AMBULANCE_TEAM ) );
+        this.assignAgents( firebrigadeList );
+        this.assignAgents( policeforceList );
+        this.assignAgents( ambulanceteamList );
       }
-    } catch(ExecutionException | InterruptedException e) {
+    } catch ( ExecutionException | InterruptedException e ) {
       e.printStackTrace();
     }
   }
   
   
-  private void assignAgents(List<StandardEntity> agentList) {
+  private void assignAgents( List<StandardEntity> agentList ) {
     int clusterIndex = 0;
     
     Random r = new Random();
-    for(StandardEntity agent : agentList) {
-      clusterIndex = (int) r.nextInt(this.clusterSize);
-      this.clusterEntitiesList.get(clusterIndex).add(agent);
-      this.clusterEntityIDsList.get(clusterIndex).add(agent.getID());
+    for ( StandardEntity agent : agentList ) {
+      clusterIndex = (int) r.nextInt( this.clusterSize );
+      this.clusterEntitiesList.get( clusterIndex ).add( agent );
+      this.clusterEntityIDsList.get( clusterIndex ).add( agent.getID() );
     }
   }
   
