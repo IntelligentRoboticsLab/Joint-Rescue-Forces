@@ -482,6 +482,71 @@ matlab.eval("save('graph.mat',G);");
  <small></small>
 
 </section>
+<section>
+<h3>Execute this Java-code as precompute process</h3>
+
+<p>
+<br>
+<p>
+
+<div align=left style="border: 2px solid black">
+<small>
+<code> 
+cd ~ <br>
+mkdir git<br>
+cd git<br>
+git clone https://github.com/roborescue/rcrs-server.git<br>
+<br>
+cd rcrs-server/boot<br>
+./start-precompute.sh -m ../maps/gml/kobe/map/ -c ../maps/gml/kobe/config/
+</code>
+</small>
+</div>
+
+<p>
+<br>
+<p>
+
+<div align=left style="border: 2px solid black">
+<small>
+<code> 
+cd ~ <br>
+mkdir git<br>
+cd git<br>
+git clone https://github.com/IntelligentRoboticsLab/Joint-Rescue-Forces.git<br>
+cd Joint-Rescue-Forces<br>
+./precompute-matlab.sh 1 0 1 0 1 0 localhost
+</code>
+</small>
+</section>
+<section>
+<h3>Load the graph into Matlab workspace</h3>
+
+<p>
+<br>
+<p>
+
+<div align=left style="border: 2px solid black">
+<small>
+<code> 
+load ../data/graph.mat<br>
+plot(G,'NodeLabel',cellstr(G.Nodes.ID));<br>
+</code>
+</small>
+</div>
+
+<p>
+<br>
+<p>
+
+<div align=left style="border: 2px solid black">
+<small>
+<code> 
+figure(2)<br>
+plot(G,'xdata',G.Nodes.X,'ydata',G.Nodes.Y,'NodeLabel',cellstr(G.Nodes.ID));<br>
+</code>
+</small>
+</section>
 
 
       <!-- ========================= TBC  ========================== -->
