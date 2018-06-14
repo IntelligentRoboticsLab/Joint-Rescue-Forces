@@ -547,6 +547,71 @@ plot(G,'xdata',G.Nodes.X,'ydata',G.Nodes.Y,'NodeLabel',cellstr(G.Nodes.ID));<br>
 </code>
 </small>
 </section>
+<section>
+<h3>Visualize Graph</h3>
+
+<p>
+
+<ul>
+<li>The <i>x,y</i> positions of the nodes are known, but only the edges matter: 
+
+<div align=center>
+<img src=images/kobe_topo.jpg height=300>&nbsp;<img src=images/kobe_metric.jpg height=300>
+</div>
+<li>That is the connectivity and the distances of the edges.
+</ul>
+
+<p>
+
+ <small></small>
+</section>
+<section>
+<h3>Plan shortest path</h3>
+
+<p>
+
+<div align=left style="border: 2px solid black">
+<small>
+<code> 
+from = find(G.Nodes.ID=="36373");<br>
+target = [find(G.Nodes.ID=="33976") find(G.Nodes.ID=="35378") find(G.Nodes.ID=="34146")];<br>
+[TR,D] = shortestpathtree(G,from,target,'OutputForm','cell');
+</code>
+</small>
+</div>
+
+</section>
+<section>
+<h3>Path found</h3>
+
+<p>
+
+<ul>
+<li>There is a clear winner (both in number of steps and distance): 
+
+<div align=center>
+<img src=images/kobe_three_paths_from_36373.jpg width=400>
+</div>
+</ul>
+
+
+<div align=left style="border: 2px solid black">
+<small>
+<code> 
+D = <br>
+&nbsp;&#09;       252553       68434      397069<br>
+TR =<br>
+&nbsp;&#09;     {1×37 double}<br>
+&nbsp;&#09;     {1×9  double}<br>
+&nbsp;&#09;     {1×66 double}<br>
+</code>
+</small>
+</div>
+
+<p>
+
+ <small>Highlight_path is function of Peter Corke's Robotics toolbox</small>
+</section>
 
 
       <!-- ========================= TBC  ========================== -->
