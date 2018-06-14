@@ -412,6 +412,80 @@ With a heuristic cost function <font style="font-variant: small-caps">Path-Cost<
 
 </section>
 
+
+<section>
+<h3>Export Java datastructure to Matlab</h3>
+
+<p>
+<br>
+<p>
+
+<div align=left style="border: 2px solid black">
+<small>
+<code> <!-- &#09; is TAB -->
+For (Entity next: this.worldInfo.getEntities() ) {<br>
+&nbsp;&#09; loc = this.worldInfo.getLocation(next.getID()); <br>
+&nbsp;&#09; matlab.eval("G=addnode(G,table(next.getID(),loc.first(),loc.second());");<br>
+}<br>
+For (Entity next: this.worldInfo.getEntities() )<br>
+&nbsp;&#09;  Collection areaNeighbours = next.getNeighbours();<br>
+  <br>
+&nbsp;&#09;  for(entityID neighbour : areaNeigbours) {<br>
+&nbsp;&#09;&nbsp;&#09;    matlab.eval("G=addedge(G,find(next.getID()),find(neighbour.getID());");<br>
+&nbsp;&#09;  }<br>
+}<br>
+matlab.eval("save('graph.mat',G);");
+</code>
+</small>
+</div>
+</section>
+<section>
+<h3>Real Java-code</h3>
+
+<p>
+
+<ul>
+<li>A little more complex: 
+
+<div align=center>
+<img src=images/matlab_init.png width=800>
+</div>
+<li>This code adds batches. An alternative is to create two complete lists and feed it at once to a matlab-function.
+</ul>
+
+<p>
+
+ <small></small>
+
+</section>
+<section>
+<h3>Effect batch-size</h3>
+
+<p>
+
+<ul>
+<li>Adding the nodes to a graph of the Kobe map: 
+
+<div align=center>
+<table>
+<tr><td>no batch</td><td>15,7999 s</td></tr>
+<tr><td>batch of 25</td><td>1,6564 s</td></tr>
+<tr><td>batch of 250</td><td>0,6677 s</td></tr>
+<tr><td>batch of 2500</td><td>0,42233 s</td></tr>
+</table>
+</div>
+<li>For Paris the whole process takes 52,75 s.
+</ul>
+
+<p>
+
+ <small></small>
+
+</section>
+
+
+      <!-- ========================= TBC  ========================== -->
+
       </section>
       <!-- ========================================================= -->
       <section>
