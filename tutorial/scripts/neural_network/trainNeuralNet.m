@@ -1,25 +1,9 @@
-%% Load the data
-trainingData = importRescueData('training.csv');
+%% Neural network example using old Neural Network functionality
 
 %% Create neural network training input and output
-X = [trainingData.sTime, trainingData.sDist, ...
-     trainingData.sHP  , trainingData.sDamage]';
- 
-mode = 3;
-switch mode
-    case 1    % Binary classifier (alive or dead)
-        Y = (trainingData.eHP > 0)';
-    case 2    % Multi-class classifier
-        hp_bins = [0 1 3000 7000 10000];
-        bin_names = {'Dead', 'Critical', 'Injured', 'Stable'};
-        Yclass = discretize(trainingData.eHP', hp_bins);
-        Y = zeros(numel(hp_bins),numel(trainingData.eHP));
-        for idx = 1:numel(hp_bins)
-           Y(idx,Yclass==idx) = 1; 
-        end
-    case 3    % Regression (HP prediction)
-        Y = trainingData.eHP';
-end
+mode = 1;
+trainingData = importRescueData('training.csv');
+[X,Y,Yclass] = createNeuralNetData(trainingData,mode);
 
 %% Build and train a network
 net = feedforwardnet([30 15]);
@@ -32,21 +16,8 @@ Ypred = sim(net,X);
     
 % Predict on validation data
 valData = importRescueData('validation.csv');
-Xval = [valData.sTime, valData.sDist, ...
-        valData.sHP  , valData.sDamage]';
+[Xval,Yval,Yvalclass] = createNeuralNetData(valData,mode);
 Ypredval = sim(net,Xval);
-switch mode
-    case 1
-        Yval = (valData.eHP > 0)';
-    case 2
-        Yvalclass = discretize(valData.eHP', hp_bins);
-        Yval = zeros(numel(hp_bins),numel(valData.eHP));
-        for idx = 1:numel(hp_bins)
-           Yval(idx,Yvalclass==idx) = 1; 
-        end
-    case 3
-        Yval = valData.eHP';
-end
 
 % Calculate metrics
 switch mode
