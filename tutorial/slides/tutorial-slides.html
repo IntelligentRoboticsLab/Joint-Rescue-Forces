@@ -612,6 +612,94 @@ TR =<br>
 
  <small>Highlight_path is function of Peter Corke's Robotics toolbox</small>
 </section>
+<section>
+<h3>Find paths faster</h3>
+
+<p>
+
+<ul>
+<li>You can use different algorithms to plan a path: 
+
+<div align=center>
+<img src=images/kobe_depth_first.jpg width=400>
+</div>
+</ul>
+
+
+<div align=left style="border: 2px solid black">
+<small>
+<code>  
+PG.shortestpath(M(char("36373")),M(char("33976")),'algorithm', 'depth-first', 'timer') <br>
+costs=256829, time=0.087983<br>
+PG.shortestpath(M(char("36373")),M(char("33976")),'algorithm', 'Astar', 'timer') <br>
+costs=252553, time=0.095392<br>
+PG.shortestpath(M(char("36373")),M(char("33976")),'algorithm', 'Dijkstra', 'timer') <br>
+costs=252553, time=0.202984<br>
+</code>
+</small>
+</div>
+
+<p>
+
+ <small>shortestpath is modification of Peter Corke's open source Astar implementation.</small>
+</section>
+<section>
+<h3>Modify travel cost after disaster</h3>
+
+<p>
+
+<ul>
+<li>After the earthquake building have collapsed and roads are (partly blocked): 
+
+<div align=center>
+<img src=images/blockade.png width=300>
+</div>
+
+<li>In that case the travel costs can be increased:
+</ul>
+
+
+<div align=left style="border: 2px solid black">
+<small>
+<code>  
+neighbours = PG.neighbours(909);<br>
+edges = PG.edges(909);<br>
+new_cost = 4 .* PG.cost(edges);<br>
+[path_index,C] = PG.shortestpath(M(char("36373")),M(char("33976")),'algorithm', 'Astar');
+</code>
+</small>
+</div>
+
+<p>
+
+ <small>Blockade illustration is courtesy Ali Modaresi.</small>
+</section>
+<section>
+<h3>Astar will go around blockade</h3>
+
+<p>
+
+<ul>
+<li>The edge was not removed, the travel-cost were only increased: 
+
+<div align=center>
+<img src=images/kobe_astar_with_blockade.jpg width=400>
+</div>
+
+<li>The new path is the red path.
+<li>This can be done for each agent individually, based on observations and team-communication.
+</ul>
+
+
+<div align=center style="border: 2px solid black">
+<large>
+This is now your assignment!
+</large>
+</div>
+
+<p>
+
+</section>
 
 
       <!-- ========================= TBC  ========================== -->
