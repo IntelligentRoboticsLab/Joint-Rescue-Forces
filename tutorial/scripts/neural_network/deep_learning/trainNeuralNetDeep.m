@@ -1,36 +1,23 @@
-%% Load the data
-trainingData = importRescueData('training.csv');
+%% Neural network example using new Deep Learning functionality
 
 %% Create neural network training input and output
-X = trainingData{:,{'sTime','sDist','sHP','sDamage'}};
-reshapedSize = [1 1 size(X,2) size(X,1)];
-X = reshape(X,reshapedSize);
-mode = 1;
-switch mode
-    case 1
-        Y = categorical(trainingData.eHP > 0,[0 1],{'Dead','Alive'});
-        numClasses = 2;
-    case 2
-        hp_bins     = [0 1 3000 7000 10000];
-        bin_names   = {'Dead', 'Critical', 'Injured', 'Stable'};
-        numClasses  = numel(bin_names);
-        Y = discretize(trainingData.eHP, hp_bins, 'categorical', bin_names);
-    case 3
-        Y = trainingData.eHP/10000;
-end
+mode = 3;
+trainingData = importRescueData('training.csv');
+[X,Y,numClasses] = createDeepNetData(trainingData,mode);
 
 %% Build and train a network
-hiddenLayers1 = [fullyConnectedLayer(30); ...         
+hiddenLayers1 = [fullyConnectedLayer(50); ...         
                  batchNormalizationLayer; ...
                  reluLayer];
-hiddenLayers2 = [fullyConnectedLayer(15); ...         
+hiddenLayers2 = [fullyConnectedLayer(25); ...         
                  batchNormalizationLayer; ...
                  reluLayer];
 switch mode
     case {1,2}
+        classWeights = numel(Y) ./ countcats(Y)';
         outputLayers = [fullyConnectedLayer(numClasses); ... 
                         softmaxLayer; ... 
-                        classificationLayer];
+                        weightedClassificationLayer(classWeights)];
     case 3
         outputLayers = [fullyConnectedLayer(1); ...
                         regressionLayer];
@@ -38,29 +25,19 @@ end
 layers = [imageInputLayer(reshapedSize(1:3)); ...
           hiddenLayers1; ...
           hiddenLayers2; ...
-          dropoutLayer(0.75); ...
+          dropoutLayer(0.2); ...
           outputLayers];
-numBatches = 1;
+numBatches = 2;
 options = trainingOptions('sgdm', ...
-                          'InitialLearnRate',1e-3, ...
-                          'MaxEpochs',150, ...
-                          'MiniBatchSize',ceil(reshapedSize(end)/numBatches), ...
+                          'InitialLearnRate',5e-3,...
+                          'MaxEpochs',500, ...
+                          'MiniBatchSize',ceil(size(X,4)/numBatches), ...
                           'Plots','training-progress');
 [net,trainInfo] = trainNetwork(X,Y,layers,options);
 
 %% Return training and validation accuracy
 valData = importRescueData('validation.csv');
-Xval = valData{:,{'sTime','sDist','sHP','sDamage'}};
-reshapedSize = [1 1 size(Xval,2) size(Xval,1)];
-Xval = reshape(Xval,reshapedSize);
-switch mode
-    case 1
-        Yval = categorical(valData.eHP > 0,[0 1],{'Dead','Alive'});
-    case 2
-        Yval = discretize(valData.eHP, hp_bins, 'categorical', bin_names);
-    case 3
-        Yval = valData.eHP/10000;
-end
+[Xval,Yval,numClasses] = createDeepNetData(valData,mode);
 
 switch mode
     case {1,2}
