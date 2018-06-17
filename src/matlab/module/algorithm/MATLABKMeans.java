@@ -190,15 +190,7 @@ public class MATLABKMeans extends StaticClustering {
     int i = 0;
     
     try {
-      MatlabEngine ml;
-      
-      if ( MatlabEngine.findMatlab().length > 0 ) {
-        System.out.println( "CONNECT MATLAB" );
-        ml = MatlabEngine.connectMatlab();
-      } else {
-        System.out.println( "START MATLAB" );
-        ml = MatlabEngine.startMatlab();
-      }
+       MatlabEngine ml = MatlabEngine.startMatlab();
       
       // Prepare data for Matlab k-means++ clustering
       Map<String, EntityID> xyId = new HashMap<String, EntityID>();
@@ -222,12 +214,10 @@ public class MATLABKMeans extends StaticClustering {
           this.maxIter );
       
       double[] mlIndex = (double[]) mlOutput[0];
-      @SuppressWarnings ( "unused" )
-      double[][] mlCenter = (double[][]) mlOutput[1]; // TODO Allocation to
-                                                      // the
-                                                      // closest cluster
+      double[][] mlCenter = (double[][]) mlOutput[1];
       
       ml.close();
+      
       this.clusterEntitiesList = new HashMap<Integer, List<StandardEntity>>(
           this.clusterSize );
       this.clusterEntityIDsList = new ArrayList<List<EntityID>>(

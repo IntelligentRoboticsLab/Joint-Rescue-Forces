@@ -68,9 +68,7 @@ public abstract class AbstractSimpleAgent<E extends StandardEntity>
     super.postConnect();
     
     model.indexClass( StandardEntityURN.BUILDING );
-    
     buildingIDs = new HashSet<EntityID>();
-    
     roadIDs = new HashSet<EntityID>();
     
     try {
@@ -78,17 +76,13 @@ public abstract class AbstractSimpleAgent<E extends StandardEntity>
           this.outputDir + File.separator + "entities.csv", true ) );
       
       entitiesWriter.write( "entityID;x;y\n" );
-      
       BufferedWriter buildingsWriter = new BufferedWriter( new FileWriter(
           this.outputDir + File.separator + "buildings.csv", true ) );
-      
       buildingsWriter.write( "buildingID;x;y;totalArea;floors\n" );
       
-      String contentE;
-      String contentB;
       for ( StandardEntity next : model ) {
-        contentE = "";
-        contentB = "";
+        String contentE = "";
+        String contentB = "";
         if ( next instanceof Building ) {
           buildingIDs.add( next.getID() );
           Pair<Integer, Integer> location = next.getLocation( model );
@@ -107,7 +101,6 @@ public abstract class AbstractSimpleAgent<E extends StandardEntity>
         if ( !contentE.isEmpty() ) {
           entitiesWriter.write( contentE );
         }
-        
         if ( !contentB.isEmpty() ) {
           buildingsWriter.write( contentB );
         }
