@@ -128,9 +128,9 @@ public class MATLABKMeans extends StaticClustering {
     if ( this.getCountPreparate() >= 2 ) {
       return this;
     }
-    long startTime = System.currentTimeMillis();
-    this.calcStandard();
-    System.out.println( System.currentTimeMillis() - startTime );
+    // long startTime = System.currentTimeMillis();
+    // this.calcStandard();
+    // System.out.println( System.currentTimeMillis() - startTime );
     return this;
   }
   
@@ -190,7 +190,7 @@ public class MATLABKMeans extends StaticClustering {
     int i = 0;
     
     try {
-       MatlabEngine ml = MatlabEngine.startMatlab();
+      MatlabEngine ml = MatlabEngine.startMatlab();
       
       // Prepare data for Matlab k-means++ clustering
       Map<String, EntityID> xyId = new HashMap<String, EntityID>();

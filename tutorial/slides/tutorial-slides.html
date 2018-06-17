@@ -59,7 +59,7 @@
                 <li>Clustering (K-Means++)</li>
               </ul>
             </li>
-            <li>Methodology for Target Selection</li>
+            <li>ML for Task Allocation</li>
           </ol>
         </section>
       </section>
@@ -237,8 +237,7 @@
       <section>
         <section>
           <h2>
-            AI and ML Techniques in the <br> RoboCup Rescue Simulation
-            League
+            AI and ML Techniques in the <br /> RoboCup Rescue Simulation League
           </h2>
         </section>
         <section>
@@ -342,7 +341,7 @@
               <div align=center>
                 <img src=images/topo_metro.jpg width=600>
               </div>
-            <li>The goal is to get in [905, 249, 298, 938, 939, 940] <br>
+            <li>The goal is to get in [905, 249, 298, 938, 939, 940] <br />
               (from node 976).
           </ul>
         </section>
@@ -368,7 +367,7 @@
 
               <div align=center>
                 <img src=images/ParisPGraph.jpg width=600>
-              </div> That is where the <i>search strategy</i> gets important<br>
+              </div> That is where the <i>search strategy</i> gets important<br />
               (e.g. Dijkstra vs A*)
           </ul>
         </section>
@@ -401,7 +400,7 @@
               <div align=center>
                 <img src=images/UniformCostSearch.png width=900>
               </div> With a heuristic cost function <font
-              style="font-variant: small-caps">Path-Cost</font> this is A* <br>
+              style="font-variant: small-caps">Path-Cost</font> this is A* <br />
               (with path so-far it is Dijkstra's algorithm).
           </ul>
 
@@ -435,7 +434,7 @@
 
 
         <section>
-          <h3>Export Java data structure to MATLAB</h3>
+          <h3>Export Java data structure to MATLAB&reg;</h3>
 
           <p>
             <br />
@@ -443,16 +442,16 @@
           <div align=left style="border: 2px solid black">
             <small> <code>
                 <!-- &#09; is TAB -->
-                For (Entity next: this.worldInfo.getEntities() ) {<br>
-                &nbsp;&#09; loc = this.worldInfo.getLocation(next.getID()); <br>
+                For (Entity next: this.worldInfo.getEntities() ) {<br />
+                &nbsp;&#09; loc = this.worldInfo.getLocation(next.getID()); <br />
                 &nbsp;&#09;
-                matlab.eval("G=addnode(G,table(next.getID(),loc.first(),loc.second());");<br>
-                }<br> For (Entity next: this.worldInfo.getEntities() )<br>
-                &nbsp;&#09; Collection areaNeighbours = next.getNeighbours();<br>
-                <br> &nbsp;&#09; for(entityID neighbour : areaNeigbours) {<br>
+                matlab.eval("G=addnode(G,table(next.getID(),loc.first(),loc.second());");<br />
+                }<br /> For (Entity next: this.worldInfo.getEntities() )<br />
+                &nbsp;&#09; Collection areaNeighbours = next.getNeighbours();<br />
+                <br /> &nbsp;&#09; for(entityID neighbour : areaNeigbours) {<br />
                 &nbsp;&#09;&nbsp;&#09;
-                matlab.eval("G=addedge(G,find(next.getID()),find(neighbour.getID());");<br>
-                &nbsp;&#09; }<br> }<br>
+                matlab.eval("G=addedge(G,find(next.getID()),find(neighbour.getID());");<br />
+                &nbsp;&#09; }<br /> }<br />
                 matlab.eval("save('graph.mat',G);");
               </code>
             </small>
@@ -511,10 +510,10 @@
           <p>
           <div align=left style="border: 2px solid black">
             <small> <code>
-                cd ~ <br> mkdir git<br> cd git<br> git clone
-                https://github.com/roborescue/rcrs-server.git<br> cd
-                rcrs-server<br> ant clean-all<br> ant complete-build<br>
-                <br> cd boot<br> ./start-precompute.sh -m
+                cd ~ <br /> mkdir git<br /> cd git<br /> git clone
+                https://github.com/roborescue/rcrs-server.git<br /> cd
+                rcrs-server<br /> ant clean-all<br /> ant complete-build<br />
+                <br /> cd boot<br /> ./start-precompute.sh -m
                 ../maps/gml/kobe/map/ -c ../maps/gml/kobe/config/
               </code>
             </small>
@@ -525,10 +524,10 @@
           <p>
           <div align=left style="border: 2px solid black">
             <small><code>
-                cd ~ <br> mkdir git<br> cd git<br> git clone
-                https://github.com/IntelligentRoboticsLab/Joint-Rescue-Forces.git<br>
-                cd Joint-Rescue-Forces<br> ./precompute-matlab.sh 1 0 1 0 1
-                0 localhost
+                cd ~ <br /> mkdir git<br /> cd git<br /> git clone
+                https://github.com/IntelligentRoboticsLab/Joint-Rescue-Forces.git<br />
+                cd Joint-Rescue-Forces<br /> ./precompute-matlab.sh 1 0 1 0 1 0
+                localhost
               </code></small>
           </div>
         </section>
@@ -536,12 +535,12 @@
           <h3>Load the graph into MATLAB workspace</h3>
 
           <p>
-            <br>
+            <br />
           <p>
           <div align=left style="border: 2px solid black">
             <small> <code>
-                load ../data/graph.mat<br>
-                plot(G,'NodeLabel',cellstr(G.Nodes.ID));<br>
+                load ../data/graph.mat<br />
+                plot(G,'NodeLabel',cellstr(G.Nodes.ID));<br />
               </code>
             </small>
           </div>
@@ -551,8 +550,8 @@
           <p>
           <div align=left style="border: 2px solid black">
             <small> <code>
-                figure(2)<br>
-                plot(G,'xdata',G.Nodes.X,'ydata',G.Nodes.Y,'NodeLabel',cellstr(G.Nodes.ID));<br>
+                figure(2)<br />
+                plot(G,'xdata',G.Nodes.X,'ydata',G.Nodes.Y,'NodeLabel',cellstr(G.Nodes.ID));<br />
               </code>
             </small>
           </div>
@@ -582,9 +581,9 @@
           <p>
           <div align=left style="border: 2px solid black">
             <small><code>
-                from = find(G.Nodes.ID=="36373");<br> target =
+                from = find(G.Nodes.ID=="36373");<br /> target =
                 [find(G.Nodes.ID=="33976") find(G.Nodes.ID=="35378")
-                find(G.Nodes.ID=="34146")];<br> [TR,D] =
+                find(G.Nodes.ID=="34146")];<br /> [TR,D] =
                 shortestpathtree(G,from,target,'OutputForm','cell');
               </code></small>
           </div>
@@ -606,9 +605,9 @@
 
           <div align=left style="border: 2px solid black">
             <small> <code>
-                D = <br> &nbsp;&#09; 252553 68434 397069<br> TR =<br>
-                &nbsp;&#09; {1×37 double}<br> &nbsp;&#09; {1×9 double}<br>
-                &nbsp;&#09; {1×66 double}<br>
+                D = <br /> &nbsp;&#09; 252553 68434 397069<br /> TR =<br />
+                &nbsp;&#09; {1×37 double}<br /> &nbsp;&#09; {1×9 double}<br />
+                &nbsp;&#09; {1×66 double}<br />
               </code>
             </small>
           </div>
@@ -634,11 +633,11 @@
           <div align=left style="border: 2px solid black">
             <small> <code>
                 PG.shortestpath(M(char("36373")),M(char("33976")),'algorithm',
-                'depth-first', 'timer') <br> costs=256829, time=0.087983<br>
+                'depth-first', 'timer') <br /> costs=256829, time=0.087983<br />
                 PG.shortestpath(M(char("36373")),M(char("33976")),'algorithm',
-                'Astar', 'timer') <br> costs=252553, time=0.095392<br>
+                'Astar', 'timer') <br /> costs=252553, time=0.095392<br />
                 PG.shortestpath(M(char("36373")),M(char("33976")),'algorithm',
-                'Dijkstra', 'timer') <br> costs=252553, time=0.202984<br>
+                'Dijkstra', 'timer') <br /> costs=252553, time=0.202984<br />
               </code>
             </small>
           </div>
@@ -664,8 +663,8 @@
 
           <div align=left style="border: 2px solid black">
             <small><code>
-                neighbours = PG.neighbours(909);<br> edges = PG.edges(909);<br>
-                new_cost = 4 .* PG.cost(edges);<br> [path_index,C] =
+                neighbours = PG.neighbours(909);<br /> edges = PG.edges(909);<br />
+                new_cost = 4 .* PG.cost(edges);<br /> [path_index,C] =
                 PG.shortestpath(M(char("36373")),M(char("33976")),'algorithm',
                 'Astar');
               </code></small>
@@ -808,14 +807,14 @@
         </section>
 
         <section>
-          <h2>Export Data</h2>
+          <h2>Generate Data</h2>
 
           <div style="float: left; width: 50%;">
             <img src="images/clustering-data.png">
           </div>
           <div style="float: right; width: 45%;">
             <ul>
-            <li>Exported data format</li>
+              <li>Generated data format</li>
             </ul>
             <small><code>buildingID;x;y;totalArea;floors
                 40964;1811658;238270;129;1 49162;1148956;194238;876;1
@@ -825,7 +824,70 @@
         </section>
 
         <section>
+          <h3>Execute Java-code to generate data</h3>
+
+          <div align=left style="border: 2px solid black">
+            <small> <code>
+                cd rcrs-server/boot<br /> ./start.sh -m
+                $JOINT_RESCUE_FORCES/tutorial/paris/map/ -c
+                $JOINT_RESCUE_FORCES/tutorial/paris/config/
+              </code>
+            </small>
+          </div>
+
+          <p>
+            <br />
+          <p>
+          <div align=left style="border: 2px solid black">
+            <small><code>
+                cd Joint-Rescue-Forces<br /> ./data-generation.sh
+              </code></small>
+          </div>
+        </section>
+
+        <section>
+          <h2>Import Data</h2>
+
+          <div style="float: left; width: 50%;">
+            <img src="images/matlab_import_data.png" />
+          </div>
+          <div style="float: left; width: 50%;">
+            <ul>
+              <li><strong>Import Selection</strong>
+                <ul>
+                  <li>Import Data</li>
+                  <li>Generate a Script</li>
+                  <li>Generate a Function</li>
+                </ul></li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
           <h2>MATLAB&reg; Processing</h2>
+
+          <div align=left style="border: 2px solid black">
+            <small><code>
+                %% Perform k-Medoids clustering and plot the results<br />
+                numMedoids = 5;<br /> [indices,centroids] = kmeans([buildings.x
+                buildings.y],numMeans);<br /> <br /> figure<br /> hold on<br />
+                gscatter(buildings.x,buildings.y,indices)<br />
+                plot(centroids(:,1),centroids(:,2),'kx','MarkerSize',10,'LineWidth',2)<br />
+                hLegend = legend;<br /> hLegend.String{end} = 'centroids';<br />
+                title('k-Medoids Clustered Map'); xlabel('X position');
+                ylabel('Y position');<br />
+              </code> </small>
+          </div>
+          <br /> <br />
+          <div align="left" style="font-size: 75%; border: 2px solid black">
+            <p>
+              <strong>Hands-on</strong>
+            </p>
+            <small><code>
+                addpath('tutorial/scripts/clustering')<br />
+                addpath('tutorial/data/unsupervised') <br />building_cluster
+              </code></small>
+          </div>
         </section>
 
         <section>
@@ -838,7 +900,8 @@
             <ul>
               <li>Connect to MATLAB&reg;
                 <ul>
-                  <li><small><code>MatlabEngine.startMatlab();</code></small></li>
+                  <li><small><code>ml =
+                        MatlabEngine.startMatlab();</code></small></li>
                 </ul>
               </li>
               <li>Prepare the data
@@ -846,7 +909,7 @@
                   <li><small><code>double[][] mlInput</code></small></li>
                 </ul>
               </li>
-              <li>Run the <code>k-means</code>
+              <li>Run the <code>k-means</code> function
                 <ul>
                   <li><small><code>Object[] mlOutput =
                         ml.feval( 2, "kmeans", (Object) mlInput,
@@ -861,30 +924,302 @@
                   <li><small><code>double[][] mlCenter =
                         (double[][]) mlOutput[1];</code></small></li>
                 </ul>
+              </li>
             </ul>
           </div>
+        </section>
+
+        <section>
+          <h2>Connect to MATLAB&reg;</h2>
+
+          <ul>
+            <li>Start a MATLAB&reg;<br /> <small><code>MatlabEngine
+                  ml = MatlabEngine.startMatlab();</code></small>
+            </li>
+            <li>Connect to a shared MATLAB&reg;<br /> <small><code>
+                  if ( MatlabEngine.findMatlab().length > 0 ) {<br />
+                  &nbsp;&nbsp;&nbsp;MatlabEngine ml =
+                  MatlabEngine.connectMatlab();<br /> }
+                </code></small><br />
+              <ul>
+                <li>Requires an instance of MATLAB&reg; open</li>
+                <li>Session shared<br /> <small><code>matlab.engine.shareEngine</code></small>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Call MATLAB&reg;</h2>
+
+          <ul>
+            <li>Evaluate an expression <br /> <small><code>[output1,...,outputN]
+                  = eval(expression)</code></small><br /> <strong>Example:</strong><br /> <small><code>ml.eval('cd
+                  tutorial;')</code></small><br />
+            </li>
+            <li>Evaluate a function <br /> <small><code>[y1,...,yN]
+                  = feval(fun,x1,...,xM)</code></small> <br /> <strong>Example:</strong><br />
+              <small><code>Object[] mlOutput = ml.feval( 2,
+                  "kmeans", (Object) mlInput, 10, DISTANCE, 'cityblock',
+                  MAX_ITER, 100 );</code></small>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Clustering Performance</h2>
+
+          <img src="images/kmeans-performance.png" />
         </section>
       </section>
 
       <section>
         <section>
-          <h2>Methodology for Target Selection</h2>
-          <!-- <ul>
-            <li>Target selection model
-              <ul>
-                <li>Traditional Machine Learning (SVM)</li>
-                <li>Deep Learning</li>
-              </ul>
-            </li>
-            <li>Collect data</li>
-            <li>Train model in MATLAB</li>
+          <h2>ML for Task Allocation</h2>
+          <ul>
+            <li>Methodology for Target Selection</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>ML for Task Allocation</h2>
+
+          <ul>
+            <li>MATLAB&reg; can help optimize rescue operations by
+              predicting more accurately certain future state</li>
+            <li><strong>Example</strong><br /> Ambulance teams can
+              optimize their rescue operations by predicting more accurately the
+              chance of potential victims to survive.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Methodology</h2>
+
+          <ol>
+            <li>Generate data</li>
+            <li>Import data into MATLAB&reg;</li>
+            <li>Train model in MATLAB&reg;</li>
             <li>Integrate into ADF</li>
             <li>Refine the target selection model</li>
-          </ul> -->
+          </ol>
+        </section>
+
+        <section>
+          <h2>Generate Data</h2>
+
+          <div style="float: left; width: 50%;">
+            <ul>
+              <li>Start Rescue Time</li>
+              <li>Initial Distance to Refuge</li>
+              <li>Initial HP</li>
+              <li>Initial Damage</li>
+              <li>Burriedness</li>
+              <li>End Time</li>
+              <li>End Distance to Refuge</li>
+              <li>End HP</li>
+              <li>End Damage</li>
+            </ul>
+          </div>
+          <div style="float: right; width: 50%;">
+            <ul>
+              <li>Generated data format</li>
+            </ul>
+            <div align="left">
+              <small><code>
+                  id;sTime;sDist;sHP;sDamage;eTime;eDist;eHP;eDamage<br />
+                  2146824103;12;934003;10000;0;56;0;8500;0<br />
+                  1285094217;12;1014231;10000;0;98;0;7000;80<br />
+                  1329519353;16;74983;10000;0;62;0;8500;0<br />
+                  2029710813;48;245461;8500;0;122;0;4500;80<br />
+                  802454469;33;1254470;9500;0;109;0;6500;80<br />
+                  1684298116;43;664753;9500;0;96;0;8500;0
+                </code></small>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Execute Java-code to generate data</h3>
+
+          <div align=left style="border: 2px solid black">
+            <small> <code>
+                cd rcrs-server/boot<br /> ./start.sh -m
+                $JOINT_RESCUE_FORCES/tutorial/paris/map/ -c
+                $JOINT_RESCUE_FORCES/tutorial/paris/config/
+              </code>
+            </small>
+          </div>
+
+          <p>
+            <br />
+          <p>
+          <div align=left style="border: 2px solid black">
+            <small><code>
+                cd Joint-Rescue-Forces<br /> ./data-generation.sh
+              </code></small>
+          </div>
+        </section>
+
+        <section>
+          <h2>Import Data into MATLAB&reg;</h2>
+
+          <div align=left style="font-size: 75%; border: 2px solid black">
+            <small><code>
+                addpath('tutorial/scripts/clustering')<br />
+                addpath('tutorial/data/unsupervised')<br /> trainingData =
+                importRescueData('training.csv');<br /> validationData =
+                importRescueData('validation.csv');<br /> <br /> TData =
+                trainingData(:, 2:end);<br /> VData = validationData(:, 2:end);
+              </code> </small>
+          </div>
+
+          <h2>Categorize Data</h2>
+
+          <div align=left style="font-size: 75%; border: 2px solid black">
+            <small><code>
+                hp_bins = [0 1 3000 7000 10000];<br /> bin_names = {'Dead',
+                'Critical', 'Injured', 'Stable'};<br /> TData.hp_class =
+                discretize(TData.eHP, hp_bins, 'categorical', bin_names);
+              </code> </small>
+          </div>
+        </section>
+
+        <section>
+          <h2>Train model in MATLAB&reg;</h2>
+
+          <ul>
+            <li>Supervised machine learning methods can be applied to learn
+              associations between observable variables and hidden variables
+              (part of a causal model of the world).</li>
+            <li>Estimates of the value of variables of a world model can be
+              done with
+              <ul>
+                <li>discrete states (classification)</li>
+                <li>continuous states (regression)</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Train model in MATLAB&reg;</h2>
+
+          <ul>
+            <li>We use the MATLAB&reg; Classification Learner app to train
+              a model to predict the chance victims have to survive based on an
+              estimate of the remaining health points (HP) at the end of the
+              scenario simulation.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Classification Learner</h2>
+
+          <img src="images/classification_learner.png" />
+        </section>
+
+        <section>
+          <h2>Classification Learner</h2>
+
+          <ul>
+            <li>Classification
+              <ul>
+                <li>Feature Selection</li>
+                <li>Principal Component Analysis (PCA)</li>
+                <li>Model Type</li>
+                <li>Parallel Execution</li>
+              </ul>
+            </li>
+            <li>Plots</li>
+            <li>Export Model - Export Compact Model</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Validation</h2>
+
+          <div align=left style="font-size: 75%; border: 2px solid black">
+            <small><code>
+                // VData is the validation data<br /> predictions =
+                targetSelectorModel.predictFcn(VData);<br /> <br /> numCorrect
+                = nnz(predictions == VData.hp_class);<br /> validationAccuracy
+                = numCorrect/size(VData,1);<br /> fprintf('Validation accuracy:
+                %.2f%%\n', validationAccuracy * 100);
+              </code></small>
+          </div>
+          <br />
+          <ul>
+            <li>The training and validation steps compose an iterative
+              process whose cycle should be repeated until the validation
+              accuracy is satisfactory.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Integrate into ADF</h2>
+          <div align=left>
+            <ul>
+              <li>Create a function to call the trained model</li>
+            </ul>
+          </div>
+          <div align=left style="font-size: 75%; border: 2px solid black">
+            <small><code>
+                function predictions = selectTargets(time,dist,hp,damage)<br />
+                &nbsp;&nbsp;&nbsp;persistent targetSelectorModel<br />
+                &nbsp;&nbsp;&nbsp;if isempty(targetSelectorModel)<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;load targetSelectorModel
+                targetSelectorModel<br /> &nbsp;&nbsp;&nbsp;end<br />
+
+                &nbsp;&nbsp;&nbsp;predictors = table(time,dist,hp,damage, ...<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'VariableNames',{'sTime','sDist','sHP','sDamage'});<br />
+                <br /> &nbsp;&nbsp;&nbsp;predictions =
+                int32(targetSelectorModel.predictFcn(predictors));<br /> end<br />
+              </code></small>
+          </div>
+        </section>
+
+        <section>
+          <h2>Integrate into ADF</h2>
+
+          <ul>
+            <li>The function can then be called inside the <code>calc</code>
+              method of the <code>HumanDetector</code> class for the ambulance
+              team agents
+            </li>
+          </ul>
+
+          <div align=left style="font-size: 75%; border: 2px solid black">
+            <small><code>
+                if ( MatlabEngine.findMatlab().length > 0 ) {<br />
+                &nbsp;&nbsp;&nbsp;MatlabEngine ml =
+                MatlabEngine.connectMatlab();<br /> &nbsp;&nbsp;&nbsp;int sTime
+                = rescueTarget.sTime;<br /> &nbsp;&nbsp;&nbsp;int sDist =
+                rescueTarget.sDist;<br /> &nbsp;&nbsp;&nbsp;int sHP =
+                rescueTarget.sHP;<br /> &nbsp;&nbsp;&nbsp;int sDamage =
+                rescueTarget.sDamage;<br /> <br /> &nbsp;&nbsp;&nbsp;int value
+                = ml.feval( "selectTargets", sTime, sDist, sHP, sDamage );<br />
+                <br /> &nbsp;&nbsp;&nbsp;ml.close();<br /> }
+              </code> </small>
+          </div>
+
+          <div align=left>
+            <p>
+              <strong>Important</strong>
+            </p>
+            <ul>
+              <li>Use <code>MatlabEngine.findMatlab()</code> and <code>MatlabEngine.connectMatlab()</code></li>
+              <li>Requires a MATLAB&reg; session is Running and Shared (<code>matlab.engine.shareEngine</code>)
+              </li>
+            </ul>
+          </div>
         </section>
       </section>
 
       <!-- ========================================================= -->
+
+
     </div>
   </div>
 
@@ -940,6 +1275,8 @@
 				} ]
 			});
 		</script>
+
+
 
 </body>
 </html>
