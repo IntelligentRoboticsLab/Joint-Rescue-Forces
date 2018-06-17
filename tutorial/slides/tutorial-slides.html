@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta charset="utf-8">
-<title>MATLAB Machine Learning Tutorial</title>
+<title>MATLAB<sup>&reg;</sup> Machine Learning Tutorial</title>
 <meta name="description"
-  content="MATLAB Machine Learning Tutorial - RoboCup Rescue Simulation League">
+  content="MATLAB<sup>&reg;</sup> Machine Learning Tutorial - RoboCup Rescue Simulation League">
 <meta name="author" content="Luis Gustavo Nardin">
 <meta name="author" content="Arnoud Visser">
 <meta name="author" content="Sebastian Castro">
@@ -31,7 +31,7 @@
 
       <!-- Title Slide -->
       <section>
-        <h3>MATLAB Machine Learning Tutorial</h3>
+        <h3>MATLAB<sup>&reg;</sup> Machine Learning Tutorial</h3>
         <h4>RoboCup Rescue Simulation League</h4>
         <h5>Arnoud Visser, Luis G. Nardin, and Sebastian Castro</h5>
       </section>
@@ -60,6 +60,7 @@
               </ul>
             </li>
             <li>ML for Task Allocation</li>
+            <li>Conclusion</li>
           </ol>
         </section>
       </section>
@@ -275,14 +276,13 @@
           </ul>
           Ferreira <i>et al</i>, AAMAS'10. </small>
         </section>
-        <!-- ========================= TBC  ========================== -->
       </section>
       <section>
         <section>
           <h2>AI for Precomputation</h2>
           <ul>
             <li>Path Planning (A*, Dijkstra, depth-first) <!--ul>
-                    <li>Graph creation and visualization in MATLAB</li>
+                    <li>Graph creation and visualization in MATLAB<sup>&reg;</sup></li>
                     <li>Integrate into ADF</li>
                   </ul-->
             </li>
@@ -303,7 +303,7 @@
                 <img src=images/simple-problem-solving-agent.png width=800>
               </div>
             <li>So, we need a problem formulation <small>(both in
-                Java and MATLAB)</small>.
+                Java and MATLAB<sup>&reg;</sup>)</small>.
           </ul>
 
           <p>
@@ -434,7 +434,7 @@
 
 
         <section>
-          <h3>Export Java data structure to MATLAB&reg;</h3>
+          <h3>Export Java data structure to MATLAB<sup>&reg;</sup></h3>
 
           <p>
             <br />
@@ -468,7 +468,7 @@
                 <img src=images/matlab_init.png width=800>
               </div>
             <li>This code adds batches. An alternative is to create two
-              complete lists and feed it at once to a MATLAB&reg;-function.
+              complete lists and feed it at once to a MATLAB<sup>&reg;</sup>-function.
           </ul>
         </section>
         <section>
@@ -789,10 +789,10 @@
         </section>
 
         <section>
-          <h2>MATLAB&reg; Clustering</h2>
+          <h2>MATLAB<sup>&reg;</sup> Clustering</h2>
 
           <ul>
-            <li>MATLAB&reg; provides several clustering algorithms:
+            <li>MATLAB<sup>&reg;</sup> provides several clustering algorithms:
               <ul>
                 <li>K-Means (Lloyd, 1982)</li>
                 <li>K-Medoids (Kaufman &amp; Rousseeuw, 1987)</li>
@@ -864,7 +864,7 @@
         </section>
 
         <section>
-          <h2>MATLAB&reg; Processing</h2>
+          <h2>MATLAB<sup>&reg;</sup> Processing</h2>
 
           <div align=left style="border: 2px solid black">
             <small><code>
@@ -891,14 +891,14 @@
         </section>
 
         <section>
-          <h2>Call MATLAB&reg; from Java</h2>
+          <h2>Call MATLAB<sup>&reg;</sup> from Java</h2>
 
           <div style="float: left; width: 50%;">
             <img src="images/kmeans-code.png" />
           </div>
           <div style="float: left; width: 50%;">
             <ul>
-              <li>Connect to MATLAB&reg;
+              <li>Connect to MATLAB<sup>&reg;</sup>
                 <ul>
                   <li><small><code>ml =
                         MatlabEngine.startMatlab();</code></small></li>
@@ -930,19 +930,19 @@
         </section>
 
         <section>
-          <h2>Connect to MATLAB&reg;</h2>
+          <h2>Connect to MATLAB<sup>&reg;</sup></h2>
 
           <ul>
-            <li>Start a MATLAB&reg;<br /> <small><code>MatlabEngine
+            <li>Start a MATLAB<sup>&reg;</sup><br /> <small><code>MatlabEngine
                   ml = MatlabEngine.startMatlab();</code></small>
             </li>
-            <li>Connect to a shared MATLAB&reg;<br /> <small><code>
+            <li>Connect to a shared MATLAB<sup>&reg;</sup><br /> <small><code>
                   if ( MatlabEngine.findMatlab().length > 0 ) {<br />
                   &nbsp;&nbsp;&nbsp;MatlabEngine ml =
                   MatlabEngine.connectMatlab();<br /> }
                 </code></small><br />
               <ul>
-                <li>Requires an instance of MATLAB&reg; open</li>
+                <li>Requires an instance of MATLAB<sup>&reg;</sup> open</li>
                 <li>Session shared<br /> <small><code>matlab.engine.shareEngine</code></small>
                 </li>
               </ul>
@@ -951,7 +951,7 @@
         </section>
 
         <section>
-          <h2>Call MATLAB&reg;</h2>
+          <h2>Call MATLAB<sup>&reg;</sup></h2>
 
           <ul>
             <li>Evaluate an expression <br /> <small><code>[output1,...,outputN]
@@ -986,7 +986,7 @@
           <h2>ML for Task Allocation</h2>
 
           <ul>
-            <li>MATLAB&reg; can help optimize rescue operations by
+            <li>MATLAB<sup>&reg;</sup> can help optimize rescue operations by
               predicting more accurately certain future state</li>
             <li><strong>Example</strong><br /> Ambulance teams can
               optimize their rescue operations by predicting more accurately the
@@ -999,8 +999,8 @@
 
           <ol>
             <li>Generate data</li>
-            <li>Import data into MATLAB&reg;</li>
-            <li>Train model in MATLAB&reg;</li>
+            <li>Import data into MATLAB<sup>&reg;</sup></li>
+            <li>Train model in MATLAB<sup>&reg;</sup></li>
             <li>Integrate into ADF</li>
             <li>Refine the target selection model</li>
           </ol>
@@ -1063,7 +1063,7 @@
         </section>
 
         <section>
-          <h2>Import Data into MATLAB&reg;</h2>
+          <h2>Import Data into MATLAB<sup>&reg;</sup></h2>
 
           <div align=left style="font-size: 75%; border: 2px solid black">
             <small><code>
@@ -1087,7 +1087,7 @@
         </section>
 
         <section>
-          <h2>Train model in MATLAB&reg;</h2>
+          <h2>Train model in MATLAB<sup>&reg;</sup></h2>
 
           <ul>
             <li>Supervised machine learning methods can be applied to learn
@@ -1104,10 +1104,10 @@
         </section>
 
         <section>
-          <h2>Train model in MATLAB&reg;</h2>
+          <h2>Train model in MATLAB<sup>&reg;</sup></h2>
 
           <ul>
-            <li>We use the MATLAB&reg; Classification Learner app to train
+            <li>We use the MATLAB<sup>&reg;</sup> Classification Learner app to train
               a model to predict the chance victims have to survive based on an
               estimate of the remaining health points (HP) at the end of the
               scenario simulation.</li>
@@ -1210,10 +1210,54 @@
             </p>
             <ul>
               <li>Use <code>MatlabEngine.findMatlab()</code> and <code>MatlabEngine.connectMatlab()</code></li>
-              <li>Requires a MATLAB&reg; session is Running and Shared (<code>matlab.engine.shareEngine</code>)
+              <li>Requires a MATLAB<sup>&reg;</sup> session is Running and Shared (<code>matlab.engine.shareEngine</code>)
               </li>
             </ul>
           </div>
+        </section>
+      </section>
+        <!-- ========================= TBC  ========================== -->
+      <section>
+        <section>
+          <h2>Conclusion</h2>
+
+
+          In this workshop we have demonstrated<br>the use of several AI and ML techniques:
+          <ul>
+          <li>Problem solving
+             <ul>
+             <li>Path-planning <small(Astar, Dijkstra)</small)
+             </ul> 
+          <li>Unsupervised learning:
+             <ul>
+             <li>Classification <small>(k-means clustering of city blocks)</small>
+             </ul> 
+          <li>Supervised learning:
+             <ul>
+             <li>Classification <small>(k-nearest neighbour prediction of victim class)  </small>
+             <li>Regression <small>(bagged tree model of remaining HP of victim) </small>
+             </ul>
+          </ul>
+
+ 
+        </section>
+        <section>
+          <h2>Thanks</h2>
+
+
+          This workshop was created by the Joint Rescue Forces:
+
+          <div align=center>
+          <img src=images/JointRescueForcesTeam.jpg width=600>
+          </div>
+
+          <small>This initiative is part <br>
+          of the RoboCup Federation Support for Collaborations program.</small>
+
+          <div align=right>
+          <img src=images/RoboCupRescue.jpg width=150>
+          </div>
+ 
         </section>
       </section>
 
