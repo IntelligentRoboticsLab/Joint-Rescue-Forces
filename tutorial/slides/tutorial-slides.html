@@ -814,6 +814,9 @@
             <img src="images/clustering-data.png">
           </div>
           <div style="float: right; width: 45%;">
+            <ul>
+            <li>Exported data format</li>
+            </ul>
             <small><code>buildingID;x;y;totalArea;floors
                 40964;1811658;238270;129;1 49162;1148956;194238;876;1
                 57356;683596;1257545;500;1 57358;657794;1270839;801;1
@@ -838,12 +841,12 @@
                   <li><small><code>MatlabEngine.startMatlab();</code></small></li>
                 </ul>
               </li>
-              <li>Prepare the date to MATLAB&reg;
+              <li>Prepare the data
                 <ul>
                   <li><small><code>double[][] mlInput</code></small></li>
                 </ul>
               </li>
-              <li>Run the function
+              <li>Run the <code>k-means</code>
                 <ul>
                   <li><small><code>Object[] mlOutput =
                         ml.feval( 2, "kmeans", (Object) mlInput,
