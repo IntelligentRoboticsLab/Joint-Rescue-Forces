@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta charset="utf-8">
-<title>MATLAB<sup>&reg;</sup> Machine Learning Tutorial</title>
+<title>MATLAB&reg; Machine Learning Tutorial</title>
 <meta name="description"
   content="MATLAB<sup>&reg;</sup> Machine Learning Tutorial - RoboCup Rescue Simulation League">
 <meta name="author" content="Luis Gustavo Nardin">
@@ -15,7 +15,7 @@
   content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 <link rel="stylesheet" href="reveal/css/reveal.min.css" />
-<link rel="stylesheet" href="reveal/css/theme/simple.css" id="theme" />
+<link rel="stylesheet" href="reveal/css/theme/night.css" id="theme" />
 <link rel="stylesheet" href="reveal/lib/css/zenburn.css" />
 <script>
 	document.write('<link rel="stylesheet" href="reveal/css/print/'
@@ -31,7 +31,9 @@
 
       <!-- Title Slide -->
       <section>
-        <h3>MATLAB<sup>&reg;</sup> Machine Learning Tutorial</h3>
+        <h3>
+          MATLAB<sup>&reg;</sup> Machine Learning Tutorial
+        </h3>
         <h4>RoboCup Rescue Simulation League</h4>
         <h5>Arnoud Visser, Luis G. Nardin, and Sebastian Castro</h5>
       </section>
@@ -208,11 +210,11 @@
             <li>Human provides a mathematical cost/reward function</li>
             <li>Machine repeatedly acts in simulation or real-world trials,
               evaluates reward, and "learns" to maximize reward over time</li>
-            <div align=center>
-              <img src=images/deepmind.gif>
-            </div>
-            <small>Source: Google DeepMind</small>
           </ul>
+          <div align=center>
+            <img src=images/deepmind.gif>
+          </div>
+          <small>Source: Google DeepMind</small>
         </section>
         <section>
           <h3>Deep Learning</h3>
@@ -223,14 +225,14 @@
             <li>"Deep" refers to neural networks with many layers</li>
             <li>More layers = more nonlinear = better explains complex
               systems</li>
-            <div align=center>
-              <img src=images/neural_net_example.png width=600>
-            </div>
-            <small>Source <a
-              href="https://towardsdatascience.com/applied-deep-learning-part-1-artificial-neural-networks-d7834f67a4f6">Applied
-                Deep Learning - Part 1: Artificial Neural Networks, Towards Data
-                Science, by Arden Dertat</a></small>
           </ul>
+          <div align=center>
+            <img src=images/neural_net_example.png width=600>
+          </div>
+          <small>Source <a
+            href="https://towardsdatascience.com/applied-deep-learning-part-1-artificial-neural-networks-d7834f67a4f6">Applied
+              Deep Learning - Part 1: Artificial Neural Networks, Towards Data
+              Science, by Arden Dertat</a></small>
         </section>
       </section>
 
@@ -242,20 +244,59 @@
           </h2>
         </section>
         <section>
-          <h2>AI tasks</h2>
+          <h2>Rescue Simulation Challenges</h2>
+
+          <div align="left">
+            <ul>
+              <li>Task allocation with uncertainty</li>
+              <li>Coalition formation</li>
+              <li>Cooperation</li>
+              <li>Distributed versus centralized control</li>
+              <li>Communication</li>
+            </ul>
+          </div>
+
+          <small>Courtesy Skinner &amp; Ramchurn, AAMAS'10. </small>
+        </section>
+
+        <section>
+          <h3>Rescue Simulation Tasks in ADF</h3>
+
+          <div align="left">
+            <ul>
+              <li>Path Planning</li>
+              <li>Clustering</li>
+              <li>Target Detector</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>AI and ML for Rescue Simulation</h3>
 
           <ul>
-            <li>Task allocation with uncertainty
-            <li>Coalition formation
-            <li>Co-operation
-            <li>Distributed versus centralized control
-            <li>Communication
+            <li>Path planning
+              <ul>
+                <li>A*, Dijkstra, depth-first</li>
+              </ul>
+            </li>
+            <li>Clustering
+              <ul>
+                <li>K-Means, K-Medoids, Hierarchical Clustering, Gaussian
+                  Mixture Models</li>
+              </ul>
+            </li>
+            <li>Task Allocation
+              <ul>
+                <li>Supervised Learning
+                  <ul>
+                    <li>Classification</li>
+                    <li>Regression</li>
+                  </ul>
+              </ul>
           </ul>
-
-          <small>Courtesy Skinner <i>et al</i>, AAMAS'10.
-          </small>
         </section>
-        <section>
+        <!--        <section>
           <h2>Task allocation</h2>
 
           <ul>
@@ -275,7 +316,7 @@
               </ul>
           </ul>
           Ferreira <i>et al</i>, AAMAS'10. </small>
-        </section>
+        </section> -->
       </section>
       <section>
         <section>
@@ -303,7 +344,8 @@
                 <img src=images/simple-problem-solving-agent.png width=800>
               </div>
             <li>So, we need a problem formulation <small>(both in
-                Java and MATLAB<sup>&reg;</sup>)</small>.
+                Java and MATLAB<sup>&reg;</sup>)
+            </small>.
           </ul>
 
           <p>
@@ -434,7 +476,9 @@
 
 
         <section>
-          <h3>Export Java data structure to MATLAB<sup>&reg;</sup></h3>
+          <h3>
+            Export Java data structure to MATLAB<sup>&reg;</sup>
+          </h3>
 
           <p>
             <br />
@@ -469,6 +513,19 @@
               </div>
             <li>This code adds batches. An alternative is to create two
               complete lists and feed it at once to a MATLAB<sup>&reg;</sup>-function.
+
+
+
+
+
+
+
+
+
+
+
+
+            
           </ul>
         </section>
         <section>
@@ -789,10 +846,13 @@
         </section>
 
         <section>
-          <h2>MATLAB<sup>&reg;</sup> Clustering</h2>
+          <h2>
+            MATLAB<sup>&reg;</sup> Clustering
+          </h2>
 
           <ul>
-            <li>MATLAB<sup>&reg;</sup> provides several clustering algorithms:
+            <li>MATLAB<sup>&reg;</sup> provides several clustering
+              algorithms:
               <ul>
                 <li>K-Means (Lloyd, 1982)</li>
                 <li>K-Medoids (Kaufman &amp; Rousseeuw, 1987)</li>
@@ -864,7 +924,9 @@
         </section>
 
         <section>
-          <h2>MATLAB<sup>&reg;</sup> Processing</h2>
+          <h2>
+            MATLAB<sup>&reg;</sup> Processing
+          </h2>
 
           <div align=left style="border: 2px solid black">
             <small><code>
@@ -891,7 +953,9 @@
         </section>
 
         <section>
-          <h2>Call MATLAB<sup>&reg;</sup> from Java</h2>
+          <h2>
+            Call MATLAB<sup>&reg;</sup> from Java
+          </h2>
 
           <div style="float: left; width: 50%;">
             <img src="images/kmeans-code.png" />
@@ -930,7 +994,9 @@
         </section>
 
         <section>
-          <h2>Connect to MATLAB<sup>&reg;</sup></h2>
+          <h2>
+            Connect to MATLAB<sup>&reg;</sup>
+          </h2>
 
           <ul>
             <li>Start a MATLAB<sup>&reg;</sup><br /> <small><code>MatlabEngine
@@ -942,7 +1008,8 @@
                   MatlabEngine.connectMatlab();<br /> }
                 </code></small><br />
               <ul>
-                <li>Requires an instance of MATLAB<sup>&reg;</sup> open</li>
+                <li>Requires an instance of MATLAB<sup>&reg;</sup> open
+                </li>
                 <li>Session shared<br /> <small><code>matlab.engine.shareEngine</code></small>
                 </li>
               </ul>
@@ -951,7 +1018,9 @@
         </section>
 
         <section>
-          <h2>Call MATLAB<sup>&reg;</sup></h2>
+          <h2>
+            Call MATLAB<sup>&reg;</sup>
+          </h2>
 
           <ul>
             <li>Evaluate an expression <br /> <small><code>[output1,...,outputN]
@@ -986,8 +1055,9 @@
           <h2>ML for Task Allocation</h2>
 
           <ul>
-            <li>MATLAB<sup>&reg;</sup> can help optimize rescue operations by
-              predicting more accurately certain future state</li>
+            <li>MATLAB<sup>&reg;</sup> can help optimize rescue operations
+              by predicting more accurately certain future state
+            </li>
             <li><strong>Example</strong><br /> Ambulance teams can
               optimize their rescue operations by predicting more accurately the
               chance of potential victims to survive.</li>
@@ -1063,7 +1133,9 @@
         </section>
 
         <section>
-          <h2>Import Data into MATLAB<sup>&reg;</sup></h2>
+          <h2>
+            Import Data into MATLAB<sup>&reg;</sup>
+          </h2>
 
           <div align=left style="font-size: 75%; border: 2px solid black">
             <small><code>
@@ -1087,7 +1159,9 @@
         </section>
 
         <section>
-          <h2>Train model in MATLAB<sup>&reg;</sup></h2>
+          <h2>
+            Train model in MATLAB<sup>&reg;</sup>
+          </h2>
 
           <ul>
             <li>Supervised machine learning methods can be applied to learn
@@ -1104,13 +1178,16 @@
         </section>
 
         <section>
-          <h2>Train model in MATLAB<sup>&reg;</sup></h2>
+          <h2>
+            Train model in MATLAB<sup>&reg;</sup>
+          </h2>
 
           <ul>
-            <li>We use the MATLAB<sup>&reg;</sup> Classification Learner app to train
-              a model to predict the chance victims have to survive based on an
-              estimate of the remaining health points (HP) at the end of the
-              scenario simulation.</li>
+            <li>We use the MATLAB<sup>&reg;</sup> Classification Learner
+              app to train a model to predict the chance victims have to survive
+              based on an estimate of the remaining health points (HP) at the
+              end of the scenario simulation.
+            </li>
           </ul>
         </section>
 
@@ -1210,37 +1287,75 @@
             </p>
             <ul>
               <li>Use <code>MatlabEngine.findMatlab()</code> and <code>MatlabEngine.connectMatlab()</code></li>
-              <li>Requires a MATLAB<sup>&reg;</sup> session is Running and Shared (<code>matlab.engine.shareEngine</code>)
+              <li>Requires a MATLAB<sup>&reg;</sup> session is Running and
+                Shared (<code>matlab.engine.shareEngine</code>)
               </li>
             </ul>
           </div>
         </section>
+
+        <section>
+          <h2>Target Allocation Strategies</h2>
+
+          <ul>
+            <li>Ambulance team can combine the classification information
+              with several other information about victims to determine which
+              one to rescue</li>
+            <li>Possible policies are
+              <ol>
+                <li><strong>classify all known victims</strong></li>
+                <li><strong>discard the predicted dead</strong>, and
+                <li><strong>select</strong>
+                  <ol>
+                    <li>random victim among them</li>
+                    <li>the closest victim</li>
+                    <li>the closest victim that is predicted <code>Critical</code></li>
+                  </ol></li>
+              </ol>
+            </li>
+          </ul>
+        </section>
       </section>
-        <!-- ========================= TBC  ========================== -->
+      <!-- ========================= TBC  ========================== -->
       <section>
         <section>
-          <h2>Conclusion</h2>
+          <h2>Conclusions</h2>
 
 
-          In this workshop we have demonstrated<br>the use of several AI and ML techniques:
+          In this workshop we have demonstrated<br>the use of several AI
+          and ML techniques:
           <ul>
-          <li>Problem solving
-             <ul>
-             <li>Path-planning <small>(Astar, Dijkstra)</small>
-             </ul> 
-          <li>Unsupervised learning:
-             <ul>
-             <li>Classification <small>(k-means clustering of city blocks)</small>
-             </ul> 
-          <li>Supervised learning:
-             <ul>
-             <li>Classification <small>(k-nearest neighbour prediction of victim class)  </small>
-             <li>Regression <small>(bagged tree model of remaining HP of victim) </small>
-             </ul>
+            <li>Problem solving
+              <ul>
+                <li>Path-planning <small>(Astar, Dijkstra)</small>
+              </ul>
+            <li>Unsupervised learning:
+              <ul>
+                <li>Classification <small>(k-means clustering of
+                    city blocks)</small>
+              </ul>
+            <li>Supervised learning:
+              <ul>
+                <li>Classification <small>(k-nearest neighbour
+                    prediction of victim class) </small>
+                <li>Regression <small>(bagged tree model of
+                    remaining HP of victim) </small>
+              </ul>
           </ul>
-
- 
         </section>
+
+        <section>
+          <h2>Future Works</h2>
+
+          <ul>
+            <li>Assess different strategies for task allocation</li>
+            <li>Compare different clustering algorithms</li>
+            <li>Use JNI to access MATLAB&reg; libraries</li>
+            <li>Evaluate the feasibility of implementing a Rescue team in
+              MATLAB&reg;</li>
+          </ul>
+        </section>
+
         <section>
           <h2>Thanks</h2>
 
@@ -1248,16 +1363,17 @@
           This workshop was created by the Joint Rescue Forces:
 
           <div align=center>
-          <img src=images/JointRescueForcesTeam.jpg width=600>
+            <img src=images/JointRescueForcesTeam.jpg width=600>
           </div>
 
-          <small>This initiative is part <br>
-          of the RoboCup Federation Support for Collaborations program.</small>
+          <small>This initiative is part <br> of the RoboCup
+            Federation Support for Collaborations program.
+          </small>
 
           <div align=right>
-          <img src=images/RoboCupRescue.jpg width=150>
+            <img src=images/RoboCupRescue.jpg width=150>
           </div>
- 
+
         </section>
       </section>
 
