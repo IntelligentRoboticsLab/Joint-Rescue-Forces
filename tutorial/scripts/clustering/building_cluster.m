@@ -1,5 +1,5 @@
 %% Import the building data and plot the building map
-buildings = importBuildingsData('../data/unsupervised/buildings.csv');
+buildings = importBuildingsData('data/unsupervised/buildings.csv');
 close all
 figure
 plot(buildings.x,buildings.y,'bo')
