@@ -10,3 +10,7 @@ For Open a Python or Matlab interface could be an option.
 
 15:00 The Scratch ROS demonstration on the Turtle bot works, but catching all keyboard-events for teleoperating is quite a lot of modules. We should look if it is possible to hide all ROS-interface blocks in a nested myblock.
 
+16:00 For the moment: 
+* Josie will explore Scratch - Webots combination
+* Arnoud will explore the Octave - ROS combination
+* Masuru will explore Scratch-ROS-Gazebo and try to represent CoSpace World. Maybe wise to select a small robot, such as the Kephara or Turtlerobot.
