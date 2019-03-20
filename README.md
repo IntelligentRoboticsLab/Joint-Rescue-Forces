@@ -1,4 +1,4 @@
-# Joint-Rescue-Forces
+# The Bridge to CoSpace
 This repository contains the public code, created by the major Rescue Simulation Technical Committee, for a workshop to show how Gazebo and Sparc 3.0  could be  applied in the junior RoboCup Rescue Simulation League.
 
 For more details, see the wiki page
