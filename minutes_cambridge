@@ -1,3 +1,12 @@
 ### Tuesday March 22 ###
 
-11:00 Rapid Manufacturing Challenge is interesting of undergraduate level. Yet, it is very much focused on locomotion, while sensing and cooperation are more interesting for Rescue Simulation. Creating realistic interactions with the environment with physical engines is hard. Something which could be interesting is manipulation. At the WRS victims are caried out of the disaster, maybe we could introduce such a task in the Virtual Competition. It is already a task in CoSpace (double points if you deliver your collected victims to base). 
+11:00 Rapid Manufacturing Challenge is interesting of undergraduate level. Yet, it is very much focused on locomotion, while sensing and cooperation are more interesting for Rescue Simulation. 
+Creating realistic interactions with the environment with physical engines is hard. Something which could be interesting is manipulation. At the WRS victims are caried out of the disaster, maybe we could introduce such a task in the Virtual Competition. 
+It is already a task in CoSpace (double points if you deliver your collected victims to base). 
+
+14:00 Developing a new platform for Junior level should consider requirements for Primary (below 14) and Open (14 till 1th year applied undergraduate).
+For Primary Scratch is a good option, but Ubuntu/ROS/Gazebo overkill. Maybe Scratch/[Webots}(https://cyberbotics.com/). 
+For Open a Python or Matlab interface could be an option.
+
+15:00 The Scratch ROS demonstration on the Turtle bot works, but catching all keyboard-events for teleoperating is quite a lot of modules. We should look if it is possible to hide all ROS-interface blocks in a nested myblock.
+
