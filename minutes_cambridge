@@ -47,4 +47,12 @@ For Open a Python or Matlab interface could be an option.
 
 * Masuru finished a first version of the world (with three obstacles, but no traps). He could drive the robot around with the keyboard, the collisions seems realistic.
 
+18:00 evening process
 
+* Reyhaneh has discussed CoSpace with the Iranian CoSpace teams. Both the students and teachers really like the current 'make your dll approach'.
+* Scratch is used in Iran quite often, but only in the first grades of primary school.
+* They propose two ways to integrate CoSpace and Gazebo, one is via an plugin that reads the CoSpace-calls and sends them to a Gazebo socket.
+* They propose to use Gazebo on Windows, as described at http://gazebosim.org/tutorials?tut=install_on_windows
+* To have Gazebo running natively under Windows sounds great, but the install procedure is complex and requires 30 Gb (more than most high-school students will have free).
+
+* Arnoud will install Gazebo on Windows.
