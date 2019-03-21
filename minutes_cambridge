@@ -26,4 +26,15 @@ For Open a Python or Matlab interface could be an option.
 * Arnoud has experimented with ROS for Windows, which worked fine, except for the Scratch-GUI.
 * Arnoud has installed the tutorial example of Matlab-ROS, and will see if he can replicate that in Octave.
 
+14:00 morning progress
+
+* Arnoud created a beginning of a installation manual at https://github.com/IntelligentRoboticsLab/Joint-Rescue-Forces/wiki/Installation-Instructions-Junior-Simulation
+* Arnoud has experimented with driving the Turtlebot from Matlab, via ROS for Windows. That works.
+* Arnoud created an Octave package from the ROS toolbox, which still has some dependencies
+
+* Josie was able to create an autonomous robot in Webots (ePuck) by Matlab, Python and C.
+* Josie is now trying to make custom blocks in Blocky, but that requires JavaScript.
+
+* Masuru has finished the direct-drive robot and is now creating a simple World
+
 
