@@ -37,4 +37,14 @@ For Open a Python or Matlab interface could be an option.
 
 * Masuru has finished the direct-drive robot and is now creating a simple World
 
+16:00 afternoon progress
+
+* Arnoud found out that porting the Matlab ROS toolbox to an Octave package is hard, because the toolbox is nicely implemented with namespaces, which are not available in Octave.
+
+* Josie can make custom blocks in Blocky, export that in Python-code and import this code in Webots.
+* Josie found out that robotics blocks in Snap, and send the corresponding Python-code via a socket to V-REP.
+* Josie is now looking if she could build a socket-interface for Webots.
+
+* Masuru finished a first version of the world (with three obstacles, but no traps). He could drive the robot around with the keyboard, the collisions seems realistic.
+
 
