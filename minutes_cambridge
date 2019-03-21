@@ -1,4 +1,4 @@
-### Tuesday March 22 ###
+### Wednesday March 20 ###
 
 11:00 Rapid Manufacturing Challenge is interesting of undergraduate level. Yet, it is very much focused on locomotion, while sensing and cooperation are more interesting for Rescue Simulation. 
 Creating realistic interactions with the environment with physical engines is hard. Something which could be interesting is manipulation. At the WRS victims are caried out of the disaster, maybe we could introduce such a task in the Virtual Competition. 
@@ -14,3 +14,16 @@ For Open a Python or Matlab interface could be an option.
 * Josie will explore Scratch - Webots combination
 * Arnoud will explore the Octave - ROS combination
 * Masuru will explore Scratch-ROS-Gazebo and try to represent CoSpace World. Maybe wise to select a small robot, such as the Kephara or Turtlerobot.
+
+### Thursday March 21 ###
+
+9:00 Update of last night progress
+* Josie has explored open source alternatives for Scratch with better Python interface and more flexible MyBlock nesting: Blocky from Google
+* Josie also found some projects that were able to connect Scratch-like programs to robots, but they are less general
+* Josie has explored Webots and V-REP. V-REP is more advanced, but very C-oriented. Webots has more interface possibilities
+
+* Masuru has made small direct-drive robot with three sensors at the front for Gazebo.
+* Arnoud has experimented with ROS for Windows, which worked fine, except for the Scratch-GUI.
+* Arnoud has installed the tutorial example of Matlab-ROS, and will see if he can replicate that in Octave.
+
+
