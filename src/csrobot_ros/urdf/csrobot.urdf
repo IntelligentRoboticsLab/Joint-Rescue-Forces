@@ -1,0 +1,418 @@
+<?xml version="1.0" ?>
+<robot name="robot">
+  <joint name="base_link_JOINT_0" type="fixed">
+    <parent link="base_link"/>
+    <child link="ball_rear"/>
+    <origin rpy="0  0  0" xyz="0    -0.023  0.025"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="base_link_JOINT_1" type="fixed">
+    <parent link="base_link"/>
+    <child link="ball_front"/>
+    <origin rpy="0  0  0" xyz="0     0.05   0.025"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="left_wheel_hinge" type="fixed">
+    <parent link="base_link"/>
+    <child link="l_wheel"/>
+    <origin rpy="0      1.5707  0" xyz="-0.0625  0      0.05"/>
+    <axis xyz="1.00000000e+00   0.00000000e+00  -9.00000000e-05"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="right_wheel_hinge" type="fixed">
+    <parent link="base_link"/>
+    <child link="r_wheel"/>
+    <origin rpy="0      1.5707  0" xyz="0.0625  0      0.05"/>
+    <axis xyz="1.00000000e+00   0.00000000e+00  -9.00000000e-05"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin rpy="0      0      1.5707" xyz="0    0.07  0.11"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="sonar_f_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="sonar_f_link"/>
+    <origin rpy="0      0      1.5707" xyz="0     0.1    0.095"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="sonar_r_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="sonar_r_link"/>
+    <origin rpy="0       0       0.78535" xyz="0.03535  0.08535  0.095"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="sonar_l_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="sonar_l_link"/>
+    <origin rpy="0       0       2.35605" xyz="-0.03535  0.08535  0.095"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="color_sensor_r_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="color_sensor_r_link"/>
+    <origin rpy="0       1.5707   0.78535" xyz="0.03535  0.08535  0.02"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="color_sensor_l_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="color_sensor_l_link"/>
+    <origin rpy="0       1.5707   2.35605" xyz="-0.03535  0.08535  0.02"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <link name="base_link">
+    <inertial>
+      <mass value="0.2"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.00021875" ixy="0" ixz="0" iyy="0.00021875" iyz="0" izz="0.00025"/>
+    </inertial>
+    <collision name="collision_middle">
+      <origin rpy="0  0  0" xyz="0     0.025  0.06"/>
+      <geometry>
+        <box size="0.1 0.05 0.075"/>
+      </geometry>
+    </collision>
+    <collision name="collision_rear">
+      <origin rpy="0  0  0" xyz="0    0    0.06"/>
+      <geometry>
+        <cylinder length="0.075" radius="0.05"/>
+      </geometry>
+    </collision>
+    <collision name="collision_front">
+      <origin rpy="0  0  0" xyz="0    0.05  0.06"/>
+      <geometry>
+        <cylinder length="0.075" radius="0.05"/>
+      </geometry>
+    </collision>
+    <visual name="visual_rear">
+      <origin rpy="0  0  0" xyz="0    0    0.06"/>
+      <geometry>
+        <cylinder length="0.075" radius="0.05"/>
+      </geometry>
+    </visual>
+    <visual name="visual_front">
+      <origin rpy="0  0  0" xyz="0    0.05  0.06"/>
+      <geometry>
+        <cylinder length="0.075" radius="0.05"/>
+      </geometry>
+    </visual>
+    <visual name="visual_middle">
+      <origin rpy="0  0  0" xyz="0     0.025  0.06"/>
+      <geometry>
+        <box size="0.1 0.05 0.075"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="ball_front">
+    <inertial>
+      <mass value="0.1"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="2.5e-05" ixy="0" ixz="0" iyy="2.5e-05" iyz="0" izz="2.5e-05"/>
+    </inertial>
+    <collision name="collision">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="ball_rear">
+    <inertial>
+      <mass value="0.1"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="2.5e-05" ixy="0" ixz="0" iyy="2.5e-05" iyz="0" izz="2.5e-05"/>
+    </inertial>
+    <collision name="collision">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="l_wheel">
+    <inertial>
+      <mass value="0.1"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="6.771e-05" ixy="0" ixz="0" iyy="6.771e-05" iyz="0" izz="0.000125"/>
+    </inertial>
+    <collision name="collision">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="0.025" radius="0.05"/>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="0.025" radius="0.05"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="r_wheel">
+    <inertial>
+      <mass value="0.1"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="6.771e-05" ixy="0" ixz="0" iyy="6.771e-05" iyz="0" izz="0.000125"/>
+    </inertial>
+    <collision name="collision">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="0.025" radius="0.05"/>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="0.025" radius="0.05"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="camera_link">
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.000166667" ixy="0" ixz="0" iyy="0.000166667" iyz="0" izz="0.000166667"/>
+    </inertial>
+    <collision name="collision-box">
+      <origin rpy="0  0  0" xyz="-0.001  0     0"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <collision name="collision-lens">
+      <origin rpy="0    1.57  0" xyz="0.004  0     0"/>
+      <geometry>
+        <cylinder length="0.002" radius="0.003"/>
+      </geometry>
+    </collision>
+    <visual name="visual-box">
+      <origin rpy="0  0  0" xyz="-0.001  0     0"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </visual>
+    <visual name="visual-lens">
+      <origin rpy="0    1.57  0" xyz="0.004  0     0"/>
+      <geometry>
+        <cylinder length="0.002" radius="0.003"/>
+      </geometry>
+    </visual>
+    <visual name="visual-box-lifter">
+      <origin rpy="0  0  0" xyz="-0.001  0    -0.01"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="sonar_f_link">
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.000166667" ixy="0" ixz="0" iyy="0.000166667" iyz="0" izz="0.000166667"/>
+    </inertial>
+    <collision name="collision-box">
+      <origin rpy="0  0  0" xyz="-0.001  0     0"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <collision name="collision-dome">
+      <origin rpy="0  0  0" xyz="0.004  0     0"/>
+      <geometry>
+        <sphere radius="0.003"/>
+      </geometry>
+    </collision>
+    <visual name="visual-box">
+      <origin rpy="0  0  0" xyz="-0.001  0     0"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </visual>
+    <visual name="visual-dome">
+      <origin rpy="0  0  0" xyz="0.004  0     0"/>
+      <geometry>
+        <sphere radius="0.003"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="sonar_r_link">
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.000166667" ixy="0" ixz="0" iyy="0.000166667" iyz="0" izz="0.000166667"/>
+    </inertial>
+    <collision name="collision-box">
+      <origin rpy="0  0  0" xyz="-0.001  0     0"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <collision name="collision-dome">
+      <origin rpy="0  0  0" xyz="0.004  0     0"/>
+      <geometry>
+        <sphere radius="0.003"/>
+      </geometry>
+    </collision>
+    <visual name="visual-box">
+      <origin rpy="0  0  0" xyz="-0.001  0     0"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </visual>
+    <visual name="visual-dome">
+      <origin rpy="0  0  0" xyz="0.004  0     0"/>
+      <geometry>
+        <sphere radius="0.003"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="sonar_l_link">
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.000166667" ixy="0" ixz="0" iyy="0.000166667" iyz="0" izz="0.000166667"/>
+    </inertial>
+    <collision name="collision-box">
+      <origin rpy="0  0  0" xyz="-0.001  0     0"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <collision name="collision-dome">
+      <origin rpy="0  0  0" xyz="0.004  0     0"/>
+      <geometry>
+        <sphere radius="0.003"/>
+      </geometry>
+    </collision>
+    <visual name="visual-box">
+      <origin rpy="0  0  0" xyz="-0.001  0     0"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </visual>
+    <visual name="visual-dome">
+      <origin rpy="0  0  0" xyz="0.004  0     0"/>
+      <geometry>
+        <sphere radius="0.003"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="color_sensor_r_link">
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.000166667" ixy="0" ixz="0" iyy="0.000166667" iyz="0" izz="0.000166667"/>
+    </inertial>
+    <collision name="collision-box">
+      <origin rpy="0  0  0" xyz="-0.001  0     0"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <collision name="collision-lens">
+      <origin rpy="0    1.57  0" xyz="0.004  0     0"/>
+      <geometry>
+        <cylinder length="0.002" radius="0.003"/>
+      </geometry>
+    </collision>
+    <visual name="visual-box">
+      <origin rpy="0  0  0" xyz="-0.001  0     0"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </visual>
+    <visual name="visual-lens">
+      <origin rpy="0    1.57  0" xyz="0.004  0     0"/>
+      <geometry>
+        <cylinder length="0.002" radius="0.003"/>
+      </geometry>
+    </visual>
+    <visual name="visual-box-lifter">
+      <origin rpy="0  0  0" xyz="-0.001  0    -0.01"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="color_sensor_l_link">
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.000166667" ixy="0" ixz="0" iyy="0.000166667" iyz="0" izz="0.000166667"/>
+    </inertial>
+    <collision name="collision-box">
+      <origin rpy="0  0  0" xyz="-0.001  0     0"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <collision name="collision-lens">
+      <origin rpy="0    1.57  0" xyz="0.004  0     0"/>
+      <geometry>
+        <cylinder length="0.002" radius="0.003"/>
+      </geometry>
+    </collision>
+    <visual name="visual-box">
+      <origin rpy="0  0  0" xyz="-0.001  0     0"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </visual>
+    <visual name="visual-lens">
+      <origin rpy="0    1.57  0" xyz="0.004  0     0"/>
+      <geometry>
+        <cylinder length="0.002" radius="0.003"/>
+      </geometry>
+    </visual>
+    <visual name="visual-box-lifter">
+      <origin rpy="0  0  0" xyz="-0.001  0    -0.01"/>
+      <geometry>
+        <box size="0.008 0.01 0.01"/>
+      </geometry>
+    </visual>
+  </link>
+  <transmission name="right_wheel_hinge_transmssion">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_wheel_hinge">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </joint>
+    <actuator name="right_wheel_hinge_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="left_wheel_hinge_transmssion">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_wheel_hinge">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </joint>
+    <actuator name="left_wheel_hinge_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+</robot>
