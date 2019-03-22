@@ -37,6 +37,6 @@ Just do the next commands.
     $ roslaunch csrobot_ros spawn_csrobot_ros_match.launch
 
 ## Location of models.
-Robot models are under "~/Joint-Rescue-Forces/src/csrobot_ros/sdf-blue" directory and "~/Joint-Rescue-Forces/src/csrobot_ros/sdf-red" directory.  
+Robot models are under "\~/Joint-Rescue-Forces/src/csrobot\_ros/sdf-blue" directory and "\~/Joint-Rescue-Forces/src/csrobot\_ros/sdf-red" directory.  
 
 Edit date: 22 Mar. 2019
