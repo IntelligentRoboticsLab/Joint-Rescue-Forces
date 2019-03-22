@@ -30,6 +30,13 @@ Just do the next commands.
 
 ## How to run.  
 Just do the next commands.  
+You will be able to see a Gazebo Window and two new terminals.  
+In the Gazebo window, there will be two robots and a sample CoSpace field.  
+The Blue robot is "ROBOT_1", and the Red robot is "ROBOT_2".  
+The terminals are for controlling each robot.  
+Each robot has a camera, three soner sensors, two color sensors.  
+Every input devices are publishing topics.  
+The blue robot is subscribing a topic "/ROBOT_1/cmd\_vel", the red one is subscribing a topic "/ROBOT_1/cmd\_vel".  
 
     $ cd ~  
     $ cd ~/Joint-Rescue-Forces  
