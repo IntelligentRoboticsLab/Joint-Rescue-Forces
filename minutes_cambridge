@@ -56,3 +56,9 @@ For Open a Python or Matlab interface could be an option.
 * To have Gazebo running natively under Windows sounds great, but the install procedure is complex and requires 30 Gb (more than most high-school students will have free).
 
 * Arnoud will install Gazebo on Windows.
+
+### Friday March 22 ###
+
+ 9:00 Masuru shared his world with Josie, to see if she could incorporate that in Webots
+11:00 Masuru has finished WORLD_1 and is now creating ROBOT_2
+11:00 The downloading / unpacking of the dependencies for Gazebo on Windows takes already two hours.
