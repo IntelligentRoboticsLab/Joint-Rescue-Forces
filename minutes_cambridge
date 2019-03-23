@@ -62,3 +62,7 @@ For Open a Python or Matlab interface could be an option.
  9:00 Masuru shared his world with Josie, to see if she could incorporate that in Webots
 11:00 Masuru has finished WORLD_1 and is now creating ROBOT_2
 11:00 The downloading / unpacking of the dependencies for Gazebo on Windows takes already two hours.
+
+### Saturday March 23 ###
+13:00 Some progress with showing score boards in Webots, moving towards using python & Tkinter to show score board
+13:00 Masuru investigating developing and implementing score boards and gameification in Gazebo
