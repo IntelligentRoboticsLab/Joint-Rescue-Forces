@@ -63,6 +63,21 @@ For Open a Python or Matlab interface could be an option.
 11:00 Masuru has finished WORLD_1 and is now creating ROBOT_2
 11:00 The downloading / unpacking of the dependencies for Gazebo on Windows takes already two hours.
 
+12:00 Big discussion on the road ahead (See https://drive.google.com/file/d/1eCJidT3j5I6ryn4hXtEB-n_zh-m5u7RI/view?usp=sharing) on:
+* What is the challenge?
+* What level of student are we pitching at?
+* Which involvement of few teams do we expect?
+
+13:00 Big discussion with on Reyhaneh and Amir Reze which platform choices we already could make. Webots seems to be a good option, at least for the Primary and Secondary level.
+      Yet, it is too early to stop with the Gazebo developments (and those are still valuable for the transition to the Senior League).
+      
+16:00 Joshie demonstrated that the 12:00 idea of victims as balls (for the secondary level) works for Webots.
+
 ### Saturday March 23 ###
+
+10:00 visit of the highlights of Cambridge
+
 13:00 Some progress with showing score boards in Webots, moving towards using python & Tkinter to show score board
 13:00 Masuru investigating developing and implementing score boards and gameification in Gazebo
+14:40 Arnoud has created finally a urdfdom library for Windows.
+
