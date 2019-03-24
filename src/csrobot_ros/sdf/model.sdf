@@ -236,7 +236,7 @@
           </sphere>
         </geometry>
         <plugin name='led_controller' filename='libchange_led_color.so'>
-          <serviceName>led_switch</serviceName>
+          <topicName>led_switch</topicName>
           <color>0.2 0.2 0.2 0.5</color>
         </plugin>
       </visual>
@@ -855,7 +855,7 @@
 <!-- RGB CAMERA SENSOR--> 
       <sensor type="camera" name="camera">
         <update_rate>20</update_rate>
-        <visualize>true</visualize>
+        <visualize>false</visualize>
         <camera name="camera">
           <horizontal_fov>1.047</horizontal_fov>
           <image>
@@ -970,7 +970,7 @@
       <sensor name="sonar_f" type="ray">
         <always_on>1</always_on>
         <update_rate>10</update_rate>
-        <visualize>true</visualize>
+        <visualize>false</visualize>
         <ray>
           <scan>
             <horizontal>
@@ -1084,7 +1084,7 @@
       <sensor name="sonar_r" type="ray">
         <always_on>1</always_on>
         <update_rate>10</update_rate>
-        <visualize>true</visualize>
+        <visualize>false</visualize>
         <ray>
           <scan>
             <horizontal>
@@ -1194,7 +1194,7 @@
       <sensor name="sonar_l" type="ray">
         <always_on>1</always_on>
         <update_rate>10</update_rate>
-        <visualize>true</visualize>
+        <visualize>false</visualize>
         <ray>
           <scan>
             <horizontal>
@@ -1319,7 +1319,7 @@
 <!-- RGB CAMERA SENSOR AS COLOR SENSOR(RIGHT)--> 
       <sensor type="camera" name="color_sensor_r">
         <update_rate>20</update_rate>
-        <visualize>true</visualize>
+        <visualize>false</visualize>
         <camera name="color_sensor_r">
           <horizontal_fov>0.01047</horizontal_fov>
           <image>
@@ -1450,7 +1450,7 @@
 <!-- RGB CAMERA SENSOR AS COLOR SENSOR(LEFT)--> 
       <sensor type="camera" name="color_sensor_l">
         <update_rate>20</update_rate>
-        <visualize>true</visualize>
+        <visualize>false</visualize>
         <camera name="color_sensor_l">
           <horizontal_fov>0.01047</horizontal_fov>
           <image>

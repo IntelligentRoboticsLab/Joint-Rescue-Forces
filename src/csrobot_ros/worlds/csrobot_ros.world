@@ -31,6 +31,207 @@
       <cast_shadows>1</cast_shadows>
     </light>
 
+
+<!-- ====================================================================== -->
+    <model name='Object00'>
+      <plugin name='Move_Object00' filename='libchange_object_pose.so'>
+        <robotNamespace>Object00</robotNamespace>
+        <topicName>pose</topicName>
+      </plugin>
+      <pose frame=''>100 0 0 0 0 0</pose>
+      <link name='Wall'>
+        <collision name='Collision'>
+          <geometry>
+            <box>
+              <size>0.3 0.3 0.001</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='Visual'>
+          <geometry>
+            <box>
+              <size>0.3 0.3 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <joint name='Object0_joint' type='fixed'>
+      <parent>TheFloor</parent>
+      <child>Object0</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+<!-- ====================================================================== -->
+    <model name='Object01'>
+      <plugin name='Move_Object01' filename='libchange_object_pose.so'>
+        <robotNamespace>Object01</robotNamespace>
+        <topicName>pose</topicName>
+      </plugin>
+      <pose frame=''>100 1 0 0 0 0</pose>
+      <link name='Wall'>
+        <collision name='Collision'>
+          <geometry>
+            <box>
+              <size>0.3 0.3 0.001</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='Visual'>
+          <geometry>
+            <box>
+              <size>0.3 0.3 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <joint name='Object0_joint' type='fixed'>
+      <parent>TheFloor</parent>
+      <child>Object0</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+<!-- ====================================================================== -->
+    <model name='Object02'>
+      <plugin name='Move_Object02' filename='libchange_object_pose.so'>
+        <robotNamespace>Object02</robotNamespace>
+        <topicName>pose</topicName>
+      </plugin>
+      <pose frame=''>100 2 0 0 0 0</pose>
+      <link name='Wall'>
+        <collision name='Collision'>
+          <geometry>
+            <box>
+              <size>0.3 0.3 0.001</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='Visual'>
+          <geometry>
+            <box>
+              <size>0.3 0.3 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <joint name='Object0_joint' type='fixed'>
+      <parent>TheFloor</parent>
+      <child>Object0</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+<!-- ====================================================================== -->
+    <model name='Object03'>
+      <plugin name='Move_Object03' filename='libchange_object_pose.so'>
+        <robotNamespace>Object03</robotNamespace>
+        <topicName>pose</topicName>
+      </plugin>
+      <pose frame=''>100 3 0 0 0 0</pose>
+      <link name='Wall'>
+        <collision name='Collision'>
+          <geometry>
+            <box>
+              <size>0.3 0.3 0.001</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='Visual'>
+          <geometry>
+            <box>
+              <size>0.3 0.3 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <joint name='Object0_joint' type='fixed'>
+      <parent>TheFloor</parent>
+      <child>Object0</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+
+<!-- ====================================================================== -->
+<!-- ====================================================================== -->
+
     <model name='Obstacle0'>
       <pose frame=''>-0.45 0.75 0 0 0 0</pose>
       <link name='Obsacle'>

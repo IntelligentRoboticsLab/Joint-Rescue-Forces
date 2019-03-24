@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+  <world name="default">
+    <gui fullscreen='0'>
+      <camera name='user_default'>
+        <pose frame=''>0.021617 -1.69486 2.50032 0 1.024 1.56218</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <light name='user_directional_light_0' type='directional'>
+      <pose frame=''>0.0 0.0 10.0 0 -0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>0.1 0.1 -0.9</direction>
+      <attenuation>
+        <range>100</range>
+        <constant>0</constant>
+        <linear>0</linear>
+        <quadratic>0</quadratic>
+      </attenuation>
+      <cast_shadows>1</cast_shadows>
+    </light>
+
+    <model name='Object0'>
+      <plugin name='Move_Object0' filename='libchange_object_pose.so'>
+        <robotNamespace>Object0</robotNamespace>
+        <topicName>pose</topicName>
+      </plugin>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <link name='Wall'>
+        <collision name='Collision'>
+          <geometry>
+            <box>
+              <size>0.3 0.3 0.001</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='Visual'>
+          <geometry>
+            <box>
+              <size>0.3 0.3 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <joint name='Object0_joint' type='fixed'>
+      <parent>TheFloor</parent>
+      <child>Object0</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+
+    <model name='TheWall'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <link name='Wall'>
+        <collision name='Wall_0_Collision'>
+          <pose frame=''>0 0.9075 0.075 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>2.43 0.015 0.15</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='Wall_0_Visual'>
+          <pose frame=''>0 0.9075 0.075 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>2.43 0.015 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+        </visual>
+
+        <collision name='Wall_1_Collision'>
+          <pose frame=''>0 -0.9075 0.075 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>2.43 0.015 0.15</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='Wall_1_Visual'>
+          <pose frame=''>0 -0.9075 0.075 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>2.43 0.015 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+        </visual>
+
+        <collision name='Wall_2_Collision'>
+          <pose frame=''>1.2075 0.0 0.075 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 1.830 0.15</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='Wall_2_Visual'>
+          <pose frame=''>1.2075 0.0 0.075 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 1.830 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+        </visual>
+
+        <collision name='Wall_3_Collision'>
+          <pose frame=''>-1.2075 0.0 0.075 0 0 0</pose>
+            <geometry>
+            <box>
+              <size>0.015 1.830 0.15</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='Wall_3_Visual'>
+          <pose frame=''>-1.2075 0.0 0.075 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 1.830 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+        </visual>
+      </link>
+
+      <link name='TheFloor'>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <collision name='Collision'>
+          <geometry>
+            <box>
+              <size>2.400 1.800 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='Visual'>
+          <geometry>
+            <box>
+              <size>2.400 1.800 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/csrobot_ros.material</uri>
+              <name>Gazebo/cospace-map1</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+        </visual>
+      </link>
+    
+      <static>1</static>
+    </model>
+  </world>
+</sdf>

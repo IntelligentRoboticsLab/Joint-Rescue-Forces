@@ -46,6 +46,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gazebo_msgs/SetLightProperties.h>
 #include <ros/callback_queue.h>
 #include <ros/advertise_options.h>
+#include <std_msgs/Byte.h>
 
 using namespace gazebo;
 
@@ -64,19 +65,17 @@ class LEDVisualPlugin : public VisualPlugin
   private: sdf::ElementPtr sdf_;
 
   private: ros::CallbackQueue model_queue_;
+  private: ros::Subscriber led_subscriber_;
   private: void VisualQueueThread();
   private: boost::thread callback_queue_thread_;
 
   // Pointer to ros node
   private: ros::NodeHandle* rosnode_;
-
-  private: ros::ServiceServer srv_;
-  private: std::string service_name_;
+  private: std::string topic_name_;
   private: std::string robot_namespace_;
 
-  // Callback when using service
-  private:  bool ServiceCallback(gazebo_msgs::SetLightProperties::Request &req,
-   gazebo_msgs::SetLightProperties::Response &res);
+  // Callback when hearing topic
+  private:  void LEDCallback(const std_msgs::Byte::ConstPtr& led_msg);
 };
 
 LEDVisualPlugin::LEDVisualPlugin(){}
@@ -109,12 +108,12 @@ void LEDVisualPlugin::Load(rendering::VisualPtr _visual, sdf::ElementPtr _sdf)
   gzwarn << "==========================" << this->robot_namespace_;
   gzerr << "==========================" << this->robot_namespace_;
 */
-  this->service_name_ = "/led_switch";
-  if (this->sdf_->HasElement("serviceName"))
+  this->topic_name_ = "/led_switch";
+  if (this->sdf_->HasElement("topicName"))
   {
-    this->service_name_ = this->sdf_->Get<std::string>("serviceName");
+    this->topic_name_ = this->sdf_->Get<std::string>("topicName");
   }
-  this->service_name_ = this->robot_namespace_ + this->service_name_;
+  this->topic_name_ = this->robot_namespace_ + this->topic_name_;
   if (this->sdf_->HasElement("color"))
   {
     gazebo::common::Color default_color = this->sdf_->Get<gazebo::common::Color>("color");
@@ -129,10 +128,12 @@ void LEDVisualPlugin::Load(rendering::VisualPtr _visual, sdf::ElementPtr _sdf)
     ros::init(argc, argv, "change_led", ros::init_options::NoSigintHandler);
   }
   this->rosnode_ = new ros::NodeHandle(this->robot_namespace_);
-  // advertise services on the custom queue
-  ros::AdvertiseServiceOptions aso = ros::AdvertiseServiceOptions::create<gazebo_msgs::SetLightProperties>(
-   this->service_name_, boost::bind(&LEDVisualPlugin::ServiceCallback, this, _1, _2), ros::VoidPtr(), &this->model_queue_);
-  this->srv_ = rosnode_->advertiseService(aso);
+  // ROS: Registering Subscriber
+  ros::SubscribeOptions soled =
+    ros::SubscribeOptions::create<std_msgs::Byte>
+      (this->topic_name_, 1, boost::bind(&LEDVisualPlugin::LEDCallback, this, _1),
+      ros::VoidPtr(), &this->model_queue_);
+  led_subscriber_ = this->rosnode_->subscribe(soled);
   this->callback_queue_thread_ = boost::thread(boost::bind(&LEDVisualPlugin::VisualQueueThread, this));
 }
 
@@ -140,34 +141,49 @@ void LEDVisualPlugin::Load(rendering::VisualPtr _visual, sdf::ElementPtr _sdf)
 #include <chrono>         // std::chrono::seconds
 
 // Callback when using service
-bool LEDVisualPlugin::ServiceCallback(gazebo_msgs::SetLightProperties::Request &req, 
-gazebo_msgs::SetLightProperties::Response &res)
+void LEDVisualPlugin::LEDCallback(const std_msgs::Byte::ConstPtr& led_msg)
 {
   gazebo::common::Color ledOn (1.0, 0.0, 0.0, 1.0);
   gazebo::common::Color ledOff(0.2, 0.2, 0.2, 0.5);
-  // LED:ON(1sec.) and OFF(1sec.)
-  this->model_->SetAmbient(ledOn);
-  this->model_->SetDiffuse(ledOn);
-  std::this_thread::sleep_for (std::chrono::seconds(1));
-  this->model_->SetAmbient(ledOff);
-  this->model_->SetDiffuse(ledOff);
-  std::this_thread::sleep_for (std::chrono::seconds(1));
-  // LED:ON(1sec.) and OFF(1sec.)
-  this->model_->SetAmbient(ledOn);
-  this->model_->SetDiffuse(ledOn);
-  std::this_thread::sleep_for (std::chrono::seconds(1));
-  this->model_->SetAmbient(ledOff);
-  this->model_->SetDiffuse(ledOff);
-  std::this_thread::sleep_for (std::chrono::seconds(1));
-  // LED:ON(1sec.) and OFF
-  this->model_->SetAmbient(ledOn);
-  this->model_->SetDiffuse(ledOn);
-  std::this_thread::sleep_for (std::chrono::seconds(1));
-  this->model_->SetAmbient(ledOff);
-  this->model_->SetDiffuse(ledOff);
-  res.success = true;
-  res.status_message = "Finished the flashing led";
-  return true; 
+  switch(led_msg->data)
+  {
+    case 0: // LED:OFF
+            this->model_->SetAmbient(ledOff);
+            this->model_->SetDiffuse(ledOff);
+            break;
+    case 1: // LED:ON
+            this->model_->SetAmbient(ledOn);
+            this->model_->SetDiffuse(ledOn);
+            break;
+    case 2: // LED:ON(1sec.) and OFF(1sec.)
+            this->model_->SetAmbient(ledOn);
+            this->model_->SetDiffuse(ledOn);
+            std::this_thread::sleep_for (std::chrono::seconds(1));
+            this->model_->SetAmbient(ledOff);
+            this->model_->SetDiffuse(ledOff);
+            std::this_thread::sleep_for (std::chrono::seconds(1));
+            // LED:ON(1sec.) and OFF(1sec.)
+            this->model_->SetAmbient(ledOn);
+            this->model_->SetDiffuse(ledOn);
+            std::this_thread::sleep_for (std::chrono::seconds(1));
+            this->model_->SetAmbient(ledOff);
+            this->model_->SetDiffuse(ledOff);
+            std::this_thread::sleep_for (std::chrono::seconds(1));
+            // LED:ON(1sec.) and OFF
+            this->model_->SetAmbient(ledOn);
+            this->model_->SetDiffuse(ledOn);
+            std::this_thread::sleep_for (std::chrono::seconds(1));
+            this->model_->SetAmbient(ledOff);
+            this->model_->SetDiffuse(ledOff);
+            break;
+    case 3: // LED:ON(3sec.) and OFF
+            this->model_->SetAmbient(ledOn);
+            this->model_->SetDiffuse(ledOn);
+            std::this_thread::sleep_for (std::chrono::seconds(3));
+            this->model_->SetAmbient(ledOff);
+            this->model_->SetDiffuse(ledOff);
+            break;
+  }
 }
 
 void LEDVisualPlugin::VisualQueueThread()

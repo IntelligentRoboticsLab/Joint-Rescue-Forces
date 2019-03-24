@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="paused" default="false"/>
+	<arg name="gui" default="true"/>
+	<arg name="verbose" default="false"/>
+	<arg name="world" default="csrobot_ros.world"/>
+  <arg name="robot_name" default="robot0"/>
+  <arg name="use_teleop" default="true"/>
+  <param name="use_sim_time" value="true"/>		
+
+  <!-- Launch Gazebo -->
+  <node name="gazebo" pkg="gazebo_ros" type="gzserver" respawn="false" 
+         output="screen" args="--verbose $(find csrobot_ros)/worlds/test_object_moving.world"/>
+  <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" 
+         output="screen"/>
+
+  <!-- Make robot_description and run robot_state_publisher --> 
+  <include file="$(find csrobot_ros)/launch/make_robot_description_and_call_state_publisher_csrobot.launch">
+    <arg name="robot_name"  value="$(arg robot_name)"/>
+    <arg name="xcoordinate" value="-0.75"/>
+    <arg name="ycoordinate" value="-0.75"/>
+    <arg name="zcoordinate" value=" 0.03"/>
+    <arg name="use_teleop"  value="$(arg use_teleop)"/>
+  </include> 
+
+</launch>
