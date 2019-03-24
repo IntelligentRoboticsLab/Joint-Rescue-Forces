@@ -49,4 +49,7 @@ To control robots, two new terminals are displayed automatically. Each terminal 
 Robot models are under "\~/Joint-Rescue-Forces/src/csrobot\_ros/sdf" directory.  
 The body color is changed automatically from the last character of the robot name.  
 
+## Current progress of this package.  
+Please visit [wiki](https://github.com/IntelligentRoboticsLab/Joint-Rescue-Forces/wiki/Progress_CoSpaceInGazeboROS.md) to know the current progress of developping.  
+
 Edit date: 24 Mar. 2019
