@@ -81,3 +81,13 @@ For Open a Python or Matlab interface could be an option.
 13:00 Masuru investigating developing and implementing score boards and gameification in Gazebo
 14:40 Arnoud has created finally a urdfdom library for Windows.
 
+17:00 Josie had the timer working in Webots
+17:00 Masuru is working on a blinking LED on the back of the robot.
+
+## Sunday March 24 ###
+
+11:00 The LEDs are working in Gazebo.
+11:00 Josie has supervisors scripts working in Webots, which is needed for the scoring
+11:00 Arnoud gives up (for the moment) to install Gazebo for Windows.
+11:00 Arnoud will look into how to control the Webot robots from Matlab and/or ROS.
+
