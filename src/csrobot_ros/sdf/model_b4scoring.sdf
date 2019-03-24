@@ -27,22 +27,9 @@
             <length>0.075</length>
           </cylinder>
         </geometry>
-        <material>
-          <lighting>1</lighting>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Blue</name>
-          </script>
-          <shader type='pixel'>
-            <normal_map>__default__</normal_map>
-          </shader>
-<!--
-          <ambient>0.3 0.3 0.3 1</ambient>
-          <diffuse>0.7 0.7 0.7 1</diffuse>
-          <specular>0.01 0.01 0.01 1</specular>
-          <emissive>0 0 0 1</emissive>
--->
-        </material>
+        <plugin name="set_color_rear" filename="libchange_body_color.so">
+          <color>1.0 1.0 1.0 1.0</color>
+        </plugin>
         <transparency>0</transparency>
         <cast_shadows>1</cast_shadows>
       </visual>
@@ -54,22 +41,9 @@
             <length>0.075</length>
           </cylinder>
         </geometry>
-        <material>
-          <lighting>1</lighting>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Blue</name>
-          </script>
-          <shader type='pixel'>
-            <normal_map>__default__</normal_map>
-          </shader>
-<!--
-          <ambient>0.3 0.3 0.3 1</ambient>
-          <diffuse>0.7 0.7 0.7 1</diffuse>
-          <specular>0.01 0.01 0.01 1</specular>
-          <emissive>0 0 0 1</emissive>
--->
-        </material>
+        <plugin name="set_color_front" filename="libchange_body_color.so">
+          <color>1.0 1.0 1.0 1.0</color>
+        </plugin>
         <transparency>0</transparency>
         <cast_shadows>1</cast_shadows>
       </visual>
@@ -80,22 +54,9 @@
             <size>0.1 0.05 0.075</size>
           </box>
         </geometry>
-        <material>
-          <lighting>1</lighting>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Blue</name>
-          </script>
-          <shader type='pixel'>
-            <normal_map>__default__</normal_map>
-          </shader>
-<!--
-          <ambient>0.3 0.3 0.3 1</ambient>
-          <diffuse>0.7 0.7 0.7 1</diffuse>
-          <specular>0.01 0.01 0.01 1</specular>
-          <emissive>0 0 0 1</emissive>
--->
-        </material>
+        <plugin name="set_color_middle" filename="libchange_body_color.so">
+          <color>1.0 1.0 1.0 1.0</color>
+        </plugin>
         <transparency>0</transparency>
         <cast_shadows>1</cast_shadows>
       </visual>
@@ -266,6 +227,19 @@
           </contact>
         </surface>
       </collision>
+<!-- The LED --> 
+      <visual name='LED'>
+        <pose>0 -0.04 0.0375 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.01</radius>
+          </sphere>
+        </geometry>
+        <plugin name='led_controller' filename='libchange_led_color.so'>
+          <serviceName>led_switch</serviceName>
+          <color>0.2 0.2 0.2 0.5</color>
+        </plugin>
+      </visual>
 <!-- IMU Sensor -->
       <sensor name="imu_sensor" type="imu">
         <pose>0 0 0 0 0 0</pose>
@@ -1022,10 +996,13 @@
             <resolution>0.01</resolution>
           </range>
         </ray>
-        <plugin name="gazebo_ros_sonar_controller_f" filename="libhector_gazebo_ros_sonar.so">
-          <gaussianNoise>0.005</gaussianNoise>
+        <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range_f">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>50</updateRate>
           <topicName>sonar_f</topicName>
-          <frameId>sonar_f_link</frameId>
+          <frameName>sonar_f_link</frameName>
+          <radiation>INFRARED</radiation>
+          <fov>0.2967</fov>
         </plugin>
         <pose>0 0 0 0 0 0</pose>
       </sensor>
@@ -1129,10 +1106,13 @@
             <resolution>0.01</resolution>
           </range>
         </ray>
-        <plugin name="gazebo_ros_sonar_controller_r" filename="libhector_gazebo_ros_sonar.so">
-          <gaussianNoise>0.005</gaussianNoise>
+        <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range_r">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>50</updateRate>
           <topicName>sonar_r</topicName>
-          <frameId>sonar_r_link</frameId>
+          <frameName>sonar_r_link</frameName>
+          <radiation>INFRARED</radiation>
+          <fov>0.2967</fov>
         </plugin>
         <pose>0 0 0 0 0 0</pose>
       </sensor>
@@ -1236,10 +1216,13 @@
             <resolution>0.01</resolution>
           </range>
         </ray>
-        <plugin name="gazebo_ros_sonar_controller_l" filename="libhector_gazebo_ros_sonar.so">
-          <gaussianNoise>0.005</gaussianNoise>
+        <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range_l">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>50</updateRate>
           <topicName>sonar_l</topicName>
-          <frameId>sonar_l_link</frameId>
+          <frameName>sonar_l_link</frameName>
+          <radiation>INFRARED</radiation>
+          <fov>0.2967</fov>
         </plugin>
         <pose>0 0 0 0 0 0</pose>
       </sensor>
@@ -1464,7 +1447,7 @@
           <emissive>0 0 0 0</emissive>
         </material>
       </visual>
-<!-- RGB CAMERA SENSOR AS COLOR SENSOR(RIGHT)--> 
+<!-- RGB CAMERA SENSOR AS COLOR SENSOR(LEFT)--> 
       <sensor type="camera" name="color_sensor_l">
         <update_rate>20</update_rate>
         <visualize>true</visualize>
@@ -1543,7 +1526,8 @@
       <broadcastTF>true</broadcastTF>
       <legacyMode>0</legacyMode>
     </plugin>
-
+    
+<!-- Publish the Ground Truth --> 
     <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>50.0</updateRate>

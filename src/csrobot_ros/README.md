@@ -1,33 +1,30 @@
 # csrobot_ros  
 
-This sample shows a traditional gazebo sample 2 wheeled robot model.  
-The robot can talk and hear in ROS topic.  
-A rgb camera image, a thermal camera image and a hokuyo output are published.  
-There is a world file as "worlds/csrobot_ros.world" to show a csrobot_ros robot model.  
+This sample shows a sample CoSpace field with two robots.  
+The robots can talk and hear in ROS topic.  
+A rgb camera, three soners, two color sensors are publishing their information.  
+There is a sample world file as "worlds/csrobot_ros.world".  
 
 ## How to use the robot.  
-You need two terminals.  
+You need three terminals.  
 
 ### At Terminal 1 :  
 You can run this sample by using a following command.  
 
-    $ roslaunch csrobot_ros spawn_csrobot_ros.launch   
+    $ roslaunch csrobot_ros spawn_csrobot_ros_match.launch   
 
-### At Terminal 2 :  
-You can move the robot with an ordinary teleop software by following command:  
+### At Terminal 2 (Automatically appeared):  
+You can move the "ROBOT_1" with an ordinary ROS teleop package. It will be run automatically.  
 
-    $ rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=robot/cmd_vel  
+### At Terminal 3 (Automatically appeared):  
+You can move the "ROBOT_2" with an ordinary ROS teleop package. It will be run automatically.  
 
-### At Terminal 3 :  
-You can see the robot with the rviz by following command:  
+## How to terminate.  
+At the terminal 1, push the control key and the "c" key simultaneously, until the command prompt appear again.  
 
-    $ rviz -d csrobot_ros.rviz  
-
-## Model and plugin.  
-This package uses following model.  
-
+## The robot model and the plugins.  
 |Model Name|Plugin(Program) Filename(s)|
 |---|---|
-|[csrobot_ros](https://github.com/m-shimizu/Samples_Gazebo_ROS/tree/master/models/csrobot_ros)|-|
+|sdf/model.config, sdf/model.sdf|src/change_body_color.cc, src/change_led_color.cc|
 
-Date : 16 Mar. 2018
+Date : 24 Mar. 2019

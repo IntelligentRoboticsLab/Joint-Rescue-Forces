@@ -154,9 +154,12 @@ catkin_package(
 
 ###############################################
 # Build the Crawler-Flipper Arm plugin
-#add_library(crawler_flipper_ros SHARED src/crawler_flipper_ros.cc)
-#target_link_libraries(crawler_flipper_ros gazebo_ros_utils ${GAZEBO_LIBRARIES} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
-#add_dependencies(crawler_flipper_ros gazebo_ros_utils)
+add_library(change_body_color SHARED src/change_body_color.cc)
+target_link_libraries(change_body_color gazebo_ros_utils ${GAZEBO_LIBRARIES} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+add_dependencies(change_body_color gazebo_ros_utils)
+add_library(change_led_color SHARED src/change_led_color.cc)
+target_link_libraries(change_led_color gazebo_ros_utils ${GAZEBO_LIBRARIES} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+add_dependencies(change_led_color gazebo_ros_utils)
 
 ###############################################
 # Build the robot controller

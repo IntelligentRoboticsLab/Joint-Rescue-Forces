@@ -36,14 +36,17 @@ The Blue robot is "ROBOT_1", and the Red robot is "ROBOT_2".
 The terminals are for controlling each robot.  
 Each robot has a camera, three soner sensors, two color sensors.  
 Every input devices are publishing topics.  
-The blue robot is subscribing a topic "/ROBOT_1/cmd\_vel", the red one is subscribing a topic "/ROBOT_1/cmd\_vel".  
+The blue robot is subscribing a topic "/ROBOT_1/cmd\_vel", the red one is subscribing a topic "/ROBOT_2/cmd\_vel".  
 
     $ cd ~  
     $ cd ~/Joint-Rescue-Forces  
     $ source setup.bash  
     $ roslaunch csrobot_ros spawn_csrobot_ros_match.launch
 
-## Location of models.
-Robot models are under "\~/Joint-Rescue-Forces/src/csrobot\_ros/sdf-blue" directory and "\~/Joint-Rescue-Forces/src/csrobot\_ros/sdf-red" directory.  
+To control robots, two new terminals are displayed automatically. Each terminal runs ROS teleop package connected to a robot individually.  
 
-Edit date: 22 Mar. 2019
+## Location of models.
+Robot models are under "\~/Joint-Rescue-Forces/src/csrobot\_ros/sdf" directory.  
+The body color is changed automatically from the last character of the robot name.  
+
+Edit date: 24 Mar. 2019
