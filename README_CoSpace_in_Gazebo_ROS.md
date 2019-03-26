@@ -23,7 +23,7 @@ Do followings:
 Just do the next commands.  
 
     $ cd ~  
-    $ git clone https://github.com/IntelligentRoboticsLab/Joint-Rescue-Forces.git  
+    $ git clone -branch CoSpace https://github.com/IntelligentRoboticsLab/Joint-Rescue-Forces.git  
     $ cd ~/Joint-Rescue-Forces  
     $ catkin_make  
     $ source setup.bash  
