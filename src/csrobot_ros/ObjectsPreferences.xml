@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root_specialAreaPreference>
+
+    <specialAreaPreference>
+    	<name>SpecialArea00</name>
+    	<pose_x>-0.45</pose_x>
+    	<pose_y> 0.75</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<size_x>0.3</size_x>
+    	<size_y>0.3</size_y>
+    	<size_z>0.001</size_z>
+    </specialAreaPreference>
+    
+</root_specialAreaPreference>
+
+<root_inhibitAreaPreference>
+
+    <inhibitAreaPreference>
+    	<name>InhibitArea00</name>
+    	<pose_x>-0.45</pose_x>
+    	<pose_y> 0.75</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<size_x>0.3</size_x>
+    	<size_y>0.3</size_y>
+    	<size_z>0.001</size_z>
+    </inhibitAreaPreference>
+    
+    <inhibitAreaPreference>
+    	<name>InhibitArea01</name>
+    	<pose_x>-0.75</pose_x>
+    	<pose_y> 0.75</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<size_x>0.3</size_x>
+    	<size_y>0.3</size_y>
+    	<size_z>0.001</size_z>
+    </inhibitAreaPreference>
+    
+    <inhibitAreaPreference>
+    	<name>InhibitArea03</name>
+    	<pose_x> 0.45</pose_x>
+    	<pose_y>-0.15</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<size_x>0.3</size_x>
+    	<size_y>0.3</size_y>
+    	<size_z>0.001</size_z>
+    </inhibitAreaPreference>
+    
+    <inhibitAreaPreference>
+    	<name>InhibitArea04</name>
+    	<pose_x> 0.15</pose_x>
+    	<pose_y>-0.15</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<size_x>0.3</size_x>
+    	<size_y>0.3</size_y>
+    	<size_z>0.001</size_z>
+    </inhibitAreaPreference>
+
+    <inhibitAreaPreference>
+    	<name>InhibitArea05</name>
+    	<pose_x>-0.15</pose_x>
+    	<pose_y>-0.15</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<size_x>0.3</size_x>
+    	<size_y>0.3</size_y>
+    	<size_z>0.001</size_z>
+    </inhibitAreaPreference>
+    
+    <inhibitAreaPreference>
+    	<name>InhibitArea06</name>
+    	<pose_x> 0.15</pose_x>
+    	<pose_y>-0.45</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<size_x>0.3</size_x>
+    	<size_y>0.3</size_y>
+    	<size_z>0.001</size_z>
+    </inhibitAreaPreference>
+    
+    <inhibitAreaPreference>
+    	<name>InhibitArea07</name>
+    	<pose_x> 0.15</pose_x>
+    	<pose_y>-0.75</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<size_x>0.3</size_x>
+    	<size_y>0.3</size_y>
+    	<size_z>0.001</size_z>
+    </inhibitAreaPreference>
+    
+</root_inhibitAreaPreference>
+
+<root_trapAreaPreference>
+
+    <trapAreaPreference>
+    	<name>TrapArea00</name>
+    	<pose_x>0.2</pose_x>
+    	<pose_y>0.5</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<size_x>0.08</size_x>
+    	<size_y>0.08</size_y>
+    	<size_z>0.001</size_z>
+    </trapAreaPreference>
+    
+</root_trapAreaPreference>
+
+<root_objectPreference>
+
+    <objectPreference>
+    	<name>Object00</name>
+    	<size_x>0.08</size_x>
+    	<size_y>0.08</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Red</color>
+    	<pose_x>0.1</pose_x>
+    	<pose_y>0.5</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>10</regular_point>
+    	<special_point>20</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object01</name>
+    	<size_x>0.08</size_x>
+    	<size_y>0.08</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Red</color>
+    	<pose_x>0.2</pose_x>
+    	<pose_y>0.5</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>10</regular_point>
+    	<special_point>20</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object02</name>
+    	<size_x>0.08</size_x>
+    	<size_y>0.08</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Red</color>
+    	<pose_x>0.3</pose_x>
+    	<pose_y>0.5</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>10</regular_point>
+    	<special_point>20</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object03</name>
+    	<size_x>0.08</size_x>
+    	<size_y>0.08</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Red</color>
+    	<pose_x>0.4</pose_x>
+    	<pose_y>0.5</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>10</regular_point>
+    	<special_point>20</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object04</name>
+    	<size_x>0.08</size_x>
+    	<size_y>0.08</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Red</color>
+    	<pose_x>0.5</pose_x>
+    	<pose_y>0.5</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>10</regular_point>
+    	<special_point>20</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object05</name>
+    	<size_x>0.08</size_x>
+    	<size_y>0.08</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Red</color>
+    	<pose_x>0.6</pose_x>
+    	<pose_y>0.5</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>10</regular_point>
+    	<special_point>20</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object06</name>
+    	<size_x>0.08</size_x>
+    	<size_y>0.08</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Red</color>
+    	<pose_x>0.7</pose_x>
+    	<pose_y>0.5</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>10</regular_point>
+    	<special_point>20</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object07</name>
+    	<size_x>0.08</size_x>
+    	<size_y>0.08</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Red</color>
+    	<pose_x>0.8</pose_x>
+    	<pose_y>0.5</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>10</regular_point>
+    	<special_point>20</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object08</name>
+    	<size_x>0.08</size_x>
+    	<size_y>0.08</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Red</color>
+    	<pose_x>0.9</pose_x>
+    	<pose_y>0.5</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>10</regular_point>
+    	<special_point>20</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object09</name>
+    	<size_x>0.08</size_x>
+    	<size_y>0.08</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Red</color>
+    	<pose_x>1.0</pose_x>
+    	<pose_y>0.5</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>10</regular_point>
+    	<special_point>20</special_point>
+    </objectPreference>
+
+
+
+    <objectPreference>
+    	<name>Object10</name>
+    	<size_x>0.065</size_x>
+    	<size_y>0.065</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Turquoise</color>
+    	<pose_x>0.1</pose_x>
+    	<pose_y>0.4</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>15</regular_point>
+    	<special_point>30</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object11</name>
+    	<size_x>0.065</size_x>
+    	<size_y>0.065</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Turquoise</color>
+    	<pose_x>0.2</pose_x>
+    	<pose_y>0.4</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>15</regular_point>
+    	<special_point>30</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object12</name>
+    	<size_x>0.065</size_x>
+    	<size_y>0.065</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Turquoise</color>
+    	<pose_x>0.3</pose_x>
+    	<pose_y>0.4</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>15</regular_point>
+    	<special_point>30</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object13</name>
+    	<size_x>0.065</size_x>
+    	<size_y>0.065</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Turquoise</color>
+    	<pose_x>0.4</pose_x>
+    	<pose_y>0.4</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>15</regular_point>
+    	<special_point>30</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object14</name>
+    	<size_x>0.065</size_x>
+    	<size_y>0.065</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Turquoise</color>
+    	<pose_x>0.5</pose_x>
+    	<pose_y>0.4</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>15</regular_point>
+    	<special_point>30</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object15</name>
+    	<size_x>0.065</size_x>
+    	<size_y>0.065</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Turquoise</color>
+    	<pose_x>0.6</pose_x>
+    	<pose_y>0.4</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>15</regular_point>
+    	<special_point>30</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object16</name>
+    	<size_x>0.065</size_x>
+    	<size_y>0.065</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Turquoise</color>
+    	<pose_x>0.7</pose_x>
+    	<pose_y>0.4</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>15</regular_point>
+    	<special_point>30</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object17</name>
+    	<size_x>0.065</size_x>
+    	<size_y>0.065</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Turquoise</color>
+    	<pose_x>0.8</pose_x>
+    	<pose_y>0.4</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>15</regular_point>
+    	<special_point>30</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object18</name>
+    	<size_x>0.065</size_x>
+    	<size_y>0.065</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Turquoise</color>
+    	<pose_x>0.9</pose_x>
+    	<pose_y>0.4</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>15</regular_point>
+    	<special_point>30</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object19</name>
+    	<size_x>0.065</size_x>
+    	<size_y>0.065</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Turquoise</color>
+    	<pose_x>1.0</pose_x>
+    	<pose_y>0.4</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>15</regular_point>
+    	<special_point>30</special_point>
+    </objectPreference>
+
+
+
+    <objectPreference>
+    	<name>Object20</name>
+    	<size_x>0.05</size_x>
+    	<size_y>0.05</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Black</color>
+    	<pose_x>0.1</pose_x>
+    	<pose_y>0.3</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>20</regular_point>
+    	<special_point>40</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object21</name>
+    	<size_x>0.05</size_x>
+    	<size_y>0.05</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Black</color>
+    	<pose_x>0.2</pose_x>
+    	<pose_y>0.3</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>20</regular_point>
+    	<special_point>40</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object22</name>
+    	<size_x>0.05</size_x>
+    	<size_y>0.05</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Black</color>
+    	<pose_x>0.3</pose_x>
+    	<pose_y>0.3</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>20</regular_point>
+    	<special_point>40</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object23</name>
+    	<size_x>0.05</size_x>
+    	<size_y>0.05</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Black</color>
+    	<pose_x>0.4</pose_x>
+    	<pose_y>0.3</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>20</regular_point>
+    	<special_point>40</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object24</name>
+    	<size_x>0.05</size_x>
+    	<size_y>0.05</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Black</color>
+    	<pose_x>0.5</pose_x>
+    	<pose_y>0.3</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>20</regular_point>
+    	<special_point>40</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object25</name>
+    	<size_x>0.05</size_x>
+    	<size_y>0.05</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Black</color>
+    	<pose_x>0.6</pose_x>
+    	<pose_y>0.3</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>20</regular_point>
+    	<special_point>40</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object26</name>
+    	<size_x>0.05</size_x>
+    	<size_y>0.05</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Black</color>
+    	<pose_x>0.7</pose_x>
+    	<pose_y>0.3</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>20</regular_point>
+    	<special_point>40</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object27</name>
+    	<size_x>0.05</size_x>
+    	<size_y>0.05</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Black</color>
+    	<pose_x>0.8</pose_x>
+    	<pose_y>0.3</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>20</regular_point>
+    	<special_point>40</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object28</name>
+    	<size_x>0.05</size_x>
+    	<size_y>0.05</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Black</color>
+    	<pose_x>0.9</pose_x>
+    	<pose_y>0.3</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>20</regular_point>
+    	<special_point>40</special_point>
+    </objectPreference>
+
+    <objectPreference>
+    	<name>Object29</name>
+    	<size_x>0.05</size_x>
+    	<size_y>0.05</size_y>
+    	<size_z>0.001</size_z>
+    	<color>Black</color>
+    	<pose_x>1.0</pose_x>
+    	<pose_y>0.3</pose_y>
+    	<pose_z>0.006</pose_z>
+    	<regular_point>20</regular_point>
+    	<special_point>40</special_point>
+    </objectPreference>
+    
+</root_objectPreference>
