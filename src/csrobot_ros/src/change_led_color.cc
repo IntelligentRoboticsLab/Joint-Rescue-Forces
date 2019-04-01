@@ -48,6 +48,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <ros/advertise_options.h>
 #include <std_msgs/Byte.h>
 
+/*
+  ROS_INFO("========================== %s\n", this->robot_namespace_.c_str());
+  ROS_WARN("========================== %s\n", this->robot_namespace_.c_str());
+  ROS_ERROR("========================== %s\n", this->robot_namespace_.c_str());
+  gzmsg << "==========================" << this->robot_namespace_;
+  gzwarn << "==========================" << this->robot_namespace_;
+  gzerr << "==========================" << this->robot_namespace_;
+*/
+
 using namespace gazebo;
 
 class LEDVisualPlugin : public VisualPlugin
@@ -68,6 +77,7 @@ class LEDVisualPlugin : public VisualPlugin
   private: ros::Subscriber led_subscriber_;
   private: void VisualQueueThread();
   private: boost::thread callback_queue_thread_;
+  private: boost::mutex  lock_;
 
   // Pointer to ros node
   private: ros::NodeHandle* rosnode_;
@@ -81,6 +91,8 @@ class LEDVisualPlugin : public VisualPlugin
 LEDVisualPlugin::LEDVisualPlugin(){}
 LEDVisualPlugin::~LEDVisualPlugin()
 {
+  this->model_queue_.clear();
+  this->model_queue_.disable();
   this->rosnode_->shutdown();
   this->callback_queue_thread_.join();
   delete this->rosnode_;
@@ -88,44 +100,39 @@ LEDVisualPlugin::~LEDVisualPlugin()
 
 void LEDVisualPlugin::Load(rendering::VisualPtr _visual, sdf::ElementPtr _sdf)
 {
-  if (!_visual || !_sdf)
+  if(!_visual || !_sdf)
   {
     gzerr << "No visual or SDF element specified. Plugin won't load." << std::endl;
     return;
   }
   this->model_ = _visual;
   this->sdf_ = _sdf;
+  
   this->robot_namespace_ = "";
-  if (this->sdf_->HasElement("robotNamespace"))
+  if(this->sdf_->HasElement("robotNamespace"))
   {
-    this->robot_namespace_ = this->sdf_->Get<std::string>("robotNamespace") + "/";
+    this->robot_namespace_ = this->sdf_->Get<std::string>("robotNamespace");
   }
-/*
-  ROS_INFO("========================== %s\n", this->robot_namespace_.c_str());
-  ROS_WARN("========================== %s\n", this->robot_namespace_.c_str());
-  ROS_ERROR("========================== %s\n", this->robot_namespace_.c_str());
-  gzmsg << "==========================" << this->robot_namespace_;
-  gzwarn << "==========================" << this->robot_namespace_;
-  gzerr << "==========================" << this->robot_namespace_;
-*/
+
   this->topic_name_ = "/led_switch";
   if (this->sdf_->HasElement("topicName"))
   {
     this->topic_name_ = this->sdf_->Get<std::string>("topicName");
   }
-  this->topic_name_ = this->robot_namespace_ + this->topic_name_;
-  if (this->sdf_->HasElement("color"))
+  this->topic_name_ = this->robot_namespace_ + "/" + this->topic_name_;
+
+  if(this->sdf_->HasElement("color"))
   {
     gazebo::common::Color default_color = this->sdf_->Get<gazebo::common::Color>("color");
     this->model_->SetAmbient(default_color);
     this->model_->SetDiffuse(default_color);
   }
   // Initialize the ROS node for the gazebo client if necessary
-  if (!ros::isInitialized())
+  if(!ros::isInitialized())
   {
     int argc = 0;
     char** argv = NULL;
-    ros::init(argc, argv, "change_led", ros::init_options::NoSigintHandler);
+    ros::init(argc, argv, this->robot_namespace_, ros::init_options::NoSigintHandler);
   }
   this->rosnode_ = new ros::NodeHandle(this->robot_namespace_);
   // ROS: Registering Subscriber
@@ -143,6 +150,7 @@ void LEDVisualPlugin::Load(rendering::VisualPtr _visual, sdf::ElementPtr _sdf)
 // Callback when using service
 void LEDVisualPlugin::LEDCallback(const std_msgs::Byte::ConstPtr& led_msg)
 {
+  boost::mutex::scoped_lock scoped_lock(lock_);
   gazebo::common::Color ledOn (1.0, 0.0, 0.0, 1.0);
   gazebo::common::Color ledOff(0.2, 0.2, 0.2, 0.5);
   switch(led_msg->data)

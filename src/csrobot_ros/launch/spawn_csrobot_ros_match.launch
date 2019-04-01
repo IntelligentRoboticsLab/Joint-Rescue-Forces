@@ -9,7 +9,7 @@
 
   <!-- Launch Gazebo -->
   <node name="gazebo" pkg="gazebo_ros" type="gzserver" respawn="false" 
-         output="screen" args="$(find csrobot_ros)/worlds/$(arg world)"/>
+         output="screen" args="--verbose $(find csrobot_ros)/worlds/$(arg world)"/>
   <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" 
          output="screen"/>
 

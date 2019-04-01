@@ -11,6 +11,9 @@
 #include <gazebo/sensors/sensors.hh>
 #include <gazebo/transport/TransportTypes.hh>
 #include <gazebo_plugins/gazebo_ros_utils.h>
+#include <ignition/math/Pose3.hh>
+#include <ignition/math/Vector3.hh>
+#include <ignition/math/Quaternion.hh>
 // ROS
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
@@ -116,9 +119,9 @@ class ObjectPosePlugin : public ModelPlugin
   void poseCallback(const geometry_msgs::Pose::ConstPtr& cmd_msg) 
   {
     boost::mutex::scoped_lock scoped_lock(lock_);
-    math::Pose nextPose(math::Vector3(
+    ignition::math::Pose3d nextPose(ignition::math::Vector3d(
      cmd_msg->position.x, cmd_msg->position.y, cmd_msg->position.z), 
-     math::Quaternion(cmd_msg->orientation.x, cmd_msg->orientation.y, cmd_msg->orientation.z));
+     ignition::math::Quaterniond(cmd_msg->orientation.x, cmd_msg->orientation.y, cmd_msg->orientation.z));
     this->model->SetWorldPose(nextPose);
   }
 
@@ -131,7 +134,7 @@ class ObjectPosePlugin : public ModelPlugin
     gazebo_ros_ = GazeboRosPtr(new GazeboRos(model, _sdf, "robot"));
     gazebo_ros_->isInitialized();
     this->node = transport::NodePtr(new transport::Node());
-    this->node->Init(this->model->GetWorld()->GetName());
+    this->node->Init(this->model->GetWorld()->Name());
     // ROS: setting parameters
     gazebo_ros_->getParameter<std::string> (robotnamespace_, 
                                           "robotNamespace", robotnamespace_);

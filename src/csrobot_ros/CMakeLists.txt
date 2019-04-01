@@ -163,6 +163,9 @@ add_dependencies(change_led_color gazebo_ros_utils)
 add_library(change_object_pose SHARED src/change_object_pose.cc)
 target_link_libraries(change_object_pose gazebo_ros_utils ${GAZEBO_LIBRARIES} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 add_dependencies(change_object_pose gazebo_ros_utils)
+add_library(Object_Manager SHARED src/Object_Manager.cc)
+target_link_libraries(Object_Manager gazebo_ros_utils ${GAZEBO_LIBRARIES} ${catkin_LIBRARIES} ${Boost_LIBRARIES} boost_random)
+add_dependencies(Object_Manager gazebo_ros_utils)
 
 ###############################################
 # Build the robot controller

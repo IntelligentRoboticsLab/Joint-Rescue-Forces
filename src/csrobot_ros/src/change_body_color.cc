@@ -109,12 +109,14 @@ void BODYVisualPlugin::Load(rendering::VisualPtr _visual, sdf::ElementPtr _sdf)
   gzwarn << "==========================" << this->robot_namespace_;
   gzerr << "==========================" << this->robot_namespace_;
 */
+/*
   this->service_name_ = "/model_color";
   if (this->sdf_->HasElement("serviceName"))
   {
     this->service_name_ = this->sdf_->Get<std::string>("serviceName");
   }
   this->service_name_ = this->robot_namespace_ + this->service_name_;
+*/
   if (this->sdf_->HasElement("color"))
   {
     gazebo::common::Color default_color = this->sdf_->Get<gazebo::common::Color>("color");
