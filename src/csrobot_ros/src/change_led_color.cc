@@ -163,7 +163,71 @@ void LEDVisualPlugin::LEDCallback(const std_msgs::Byte::ConstPtr& led_msg)
             this->model_->SetAmbient(ledOn);
             this->model_->SetDiffuse(ledOn);
             break;
-    case 2: // LED:ON(1sec.) and OFF(1sec.)
+    case 10: // LED:Black(G R B: 0 0 0)
+            {
+            //                               R    G    B
+              gazebo::common::Color ledColor(0.0, 0.0, 0.0, 1.0);
+              this->model_->SetAmbient(ledColor);
+              this->model_->SetDiffuse(ledColor);
+            }
+            break;
+    case 11: // LED:Blue(G R B: 0 0 1)
+            {
+            //                               R    G    B
+              gazebo::common::Color ledColor(0.0, 0.0, 1.0, 1.0);
+              this->model_->SetAmbient(ledColor);
+              this->model_->SetDiffuse(ledColor);
+            }
+            break;
+    case 12: // LED:Red(G R B: 0 1 0)
+            {
+            //                               R    G    B
+              gazebo::common::Color ledColor(1.0, 0.0, 0.0, 1.0);
+              this->model_->SetAmbient(ledColor);
+              this->model_->SetDiffuse(ledColor);
+            }
+            break;
+    case 13: // LED:Purple(G R B: 0 1 1)
+            {
+            //                               R    G    B
+              gazebo::common::Color ledColor(1.0, 0.0, 1.0, 1.0);
+              this->model_->SetAmbient(ledColor);
+              this->model_->SetDiffuse(ledColor);
+            }
+            break;
+    case 14: // LED:Green(G R B: 1 0 0)
+            {
+            //                               R    G    B
+              gazebo::common::Color ledColor(0.0, 1.0, 0.0, 1.0);
+              this->model_->SetAmbient(ledColor);
+              this->model_->SetDiffuse(ledColor);
+            }
+            break;
+    case 15: // LED:Cyan(G R B: 1 0 1)
+            {
+            //                               R    G    B
+              gazebo::common::Color ledColor(0.0, 1.0, 1.0, 1.0);
+              this->model_->SetAmbient(ledColor);
+              this->model_->SetDiffuse(ledColor);
+            }
+            break;
+    case 16: // LED:Yellow(G R B: 1 1 0)
+            {
+            //                               R    G    B
+              gazebo::common::Color ledColor(1.0, 1.0, 0.0, 1.0);
+              this->model_->SetAmbient(ledColor);
+              this->model_->SetDiffuse(ledColor);
+            }
+            break;
+    case 17: // LED:White(G R B: 1 1 1)
+            {
+            //                               R    G    B
+              gazebo::common::Color ledColor(1.0, 1.0, 1.0, 1.0);
+              this->model_->SetAmbient(ledColor);
+              this->model_->SetDiffuse(ledColor);
+            }
+            break;
+    case 20: // LED:ON(1sec.) and OFF(1sec.) for DEMO
             this->model_->SetAmbient(ledOn);
             this->model_->SetDiffuse(ledOn);
             std::this_thread::sleep_for (std::chrono::seconds(1));
@@ -184,7 +248,7 @@ void LEDVisualPlugin::LEDCallback(const std_msgs::Byte::ConstPtr& led_msg)
             this->model_->SetAmbient(ledOff);
             this->model_->SetDiffuse(ledOff);
             break;
-    case 3: // LED:ON(3sec.) and OFF
+    case 30: // LED:ON(3sec.) and OFF for DEMO
             this->model_->SetAmbient(ledOn);
             this->model_->SetDiffuse(ledOn);
             std::this_thread::sleep_for (std::chrono::seconds(3));
