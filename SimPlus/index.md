@@ -1,3 +1,4 @@
+<!--Based on an earlier version of https://github.com/jaehughes/SimPlus-->
 # RoboCup Simulation (Secondary/Open)
 
 This page gives some install, set up and introduction to use Webots for a Rescue based simulation setup. This is a demo, or trial, for creating a Rescue Simulation based platform to bridge the gap between RoboCupJunior Rescue Simulation & RoboCup Major Rescue Simulation. This platform uses open-source software, and the installation has been kept as simple as possible to provide a low barried to entry.  A number of introductory exercises are provided, in addition to which many more are available online.  Specific 'competition worlds' are also provided which are similar to thoose which will be used in the competition.  
@@ -10,7 +11,9 @@ This rescue scenario based simulation competition will use [Webots](https://cybe
 
 Controllers for robots can be developed in a variety of different lanugages including C, Python and MatLab.  Although Python will be used in these tuotorials, teams are welcome to use any of the alternative languages which are provided.  
 
-![alt text](logo.jpg "Combination of Environments")
+<figure>
+<img src="logo.jpg" alt="Combination of programming environments" width="100%"/>
+</figure>
 
 
 # Rules
@@ -41,11 +44,13 @@ There are a number of online resources online, including many activities.  The m
 * [Webots E-Book](https://en.wikibooks.org/wiki/Cyberbotics%27_Robot_Curriculum) - provides an curriculum for Webots using the Epuc robot.  Starts quite simply, but gets rapidly more challenging!
 
 # The Robot
-The robot used in this simulation is based on a real-world robot which has been created for education and research, the Epuc.  Specific details about the robot can be found [here](https://cyberbotics.com/doc/guide/epuck).    
+The robot used in this simulation is based on a real-world robot which has been created for education and research, the Epuck2.  Specific details about the robot can be found [here](https://cyberbotics.com/doc/guide/epuck2).    
 
 The robot is equipped with a differential drive wheel system actuated by two stepper motors, a number of distance sensors, light sensors and a camera.  This is summarised in the Figure below.  
 
-![alt text](epuc.jpg "The Epuc Robot: sensors and actuators")
+<figure>
+  <img src="e-puck2-features.png" alt="The Epuck2 robot: sensors and actuators" width="600"/>
+</figure>
 
 
 # Getting Started
