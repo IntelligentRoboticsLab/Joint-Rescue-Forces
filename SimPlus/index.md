@@ -22,7 +22,9 @@ This competitions focuses on an abstraction of a rescue scenario.  A world will 
 * Alive victims will be represented by balls which are red and have a happy face
 * Dead victims will be represented by balls which are blue and have a sad face.
 
-To 'locate' the ball, the robot must travel within 0.1m of the ball and stay stationary for at least 2 seconds.  
+To 'locate' the ball, the robot must travel within 0.1m of the ball and stay stationary for at least 2 seconds.
+
+To score extra points, the balls can be pushed back to the base.
 
 # Installation
 
